@@ -1,0 +1,177 @@
+* {
+  font-family: "JetBrains Mono", "Iosevka Nerd Font", archcraft, sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 4px;
+  padding: 0px 2px;
+}
+
+window#waybar {
+  background-color: @Base;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+#keyboard-state {
+  color: @Base;
+}
+#keyboard-state label.locked {
+  color: @Green;
+}
+
+#workspaces button {
+  color: @Overlay0;
+}
+#workspaces button.visible {
+  color: @Text;
+}
+#custom-power {
+  color: @Red;
+}
+#custom-mako.active {
+  color: @Surface1;
+}
+#custom-mako.inactive {
+  color: @Mauve;
+}
+
+#temperature {
+  color: @Red;
+}
+
+#clock {
+  color: @Mauve;
+}
+
+#cpu {
+  color: @Maroon;
+}
+
+#memory {
+  color: @Peach;
+}
+
+#disk {
+  color: @Yellow;
+}
+
+#tray {
+  color: @Surface0;
+}
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+#custom-display-temperature {
+  color: @Sapphire;
+}
+
+#custom-display-brightness {
+  color: @Sky;
+}
+
+#backlight {
+  color: @Sky;
+}
+
+#pulseaudio.input {
+  color: @Lavender;
+}
+#pulseaudio.output {
+  color: @Blue;
+}
+#pulseaudio.input.muted,
+#pulseaudio.output.source-muted {
+  color: @Surface1;
+}
+
+#network {
+  color: @Teal;
+}
+#network.disconnected,
+#network.disabled {
+  color: @Text;
+}
+
+#battery {
+  color: @Green;
+}
+#battery.good {
+  color: @Yellow;
+}
+#battery.warning {
+  color: @Peach;
+}
+#battery.low {
+  color: @Maroon;
+}
+#battery.critical {
+  color: @Red;
+  color: @Red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes blink {
+  to {
+    color: @Crust;
+  }
+}
+
+#backlight,
+#battery,
+#clock,
+#cpu,
+#disk,
+#mode,
+#memory,
+#mpd,
+#idle_inhibitor,
+#tray,
+#pulseaudio,
+#temperature,
+#network,
+#custom-menu,
+#custom-mako,
+#custom-power,
+#keyboard-state,
+#custom-display-temperature,
+#custom-display-brightness {
+  padding: 0px 8px;
+}
+
+@define-color Rosewater #f5e0dc;
+@define-color Flamingo #f2cdcd;
+@define-color Pink #f5c2e7;
+@define-color Mauve #cba6f7;
+@define-color Red #f38ba8;
+@define-color Maroon #eba0ac;
+@define-color Peach #fab387;
+@define-color Yellow #f9e2af;
+@define-color Green #a6e3a1;
+@define-color Teal #94e2d5;
+@define-color Sky #89dceb;
+@define-color Sapphire #74c7ec;
+@define-color Blue #89b4fa;
+@define-color Lavender #b4befe;
+
+@define-color Text #cdd6f4;
+@define-color Subtext1 #bac2de;
+@define-color Subtext0 #a6adc8;
+@define-color Overlay2 #9399b2;
+@define-color Overlay1 #7f849c;
+@define-color Overlay0 #6c7086;
+@define-color Surface2 #585b70;
+@define-color Surface1 #45475a;
+@define-color Surface0 #313244;
+@define-color Base #1e1e2e;
+@define-color Mantle #181825;
+@define-color Crust #11111b;
