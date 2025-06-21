@@ -49,10 +49,9 @@ PKG_INSTALL=(
 )
 
 PKG_AUR_INSTALL=(
-  aur/stremio
+  aur/brave-bin
   aur/visual-studio-code-bin
   aur/mailspring-bin
-  aur/google-chrome
   aur/wdisplays
   aur/wl-gammarelay-rs
   aur/wlrctl
@@ -60,7 +59,6 @@ PKG_AUR_INSTALL=(
   aur/lazydocker-bin
   aur/ferdium-bin
   aur/zsh-theme-powerlevel10k-bin-git
-  aur/nvm
 )
 
 PKG_UNINSTALL=(
