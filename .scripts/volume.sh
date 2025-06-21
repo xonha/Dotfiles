@@ -2,7 +2,7 @@
 
 ## Script To Manage Speaker Volume For Archcraft (in Wayland).
 
-DIR="$HOME/.config/hypr/notification/icons"
+DIR="$HOME/.config/mako/icons"
 notify_cmd='notify-send -h string:x-canonical-private-synchronous:sys-notify-volume -u low'
 
 # Get Volume
