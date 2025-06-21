@@ -1,6 +1,6 @@
 [general]
 compat-delete='delete-sequence'
-default-shell='/usr/bin/fish'
+default-shell='/usr/bin/zsh'
 display-n=0
 display-tab-names=1
 gtk-use-system-default-theme=true
