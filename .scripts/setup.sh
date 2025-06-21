@@ -104,18 +104,9 @@ PKG_UNINSTALL=(
   thunar
 )
 
-# echo "Setting up git remotes as SSH..."
-# cd /tmp/home && git remote set-url origin git@github.com:xonha/home.git
-# cd /tmp/hypr && git remote set-url origin git@github.com:xonha/hypr.git
-# cd /tmp/nvim && git remote set-url origin git@github.com:xonha/nvim.git
-
-# echo "Copying configurations..."
-# cp -r /tmp/home/. ~/
-# cp -r /tmp/hypr /tmp/nvim ~/.config
-
 echo "Cloning Dotfiles"
 git clone https://github.com/xonha/Dotfiles
-cd /Dotfiles && git remote set-url origin git@github.com:xonha/Dotfiles.git
+cd /Dotfiles && git remote set-url origin git@github.com:xonha/Dotfile.git
 
 echo "Installing keyring..."
 sudo pacman -Sy --needed --noconfirm archlinux-keyring
