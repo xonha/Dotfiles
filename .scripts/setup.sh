@@ -48,6 +48,7 @@ PKG_INSTALL=(
   network-manager-applet
   keyd
   nvm
+  kdeconnect
 )
 
 PKG_AUR_INSTALL=(
@@ -59,7 +60,7 @@ PKG_AUR_INSTALL=(
   aur/ferdium-bin
   aur/wlrctl
   aur/wdisplays
-
+  aur/todoist-appimage
   aur/wl-gammarelay-rs
   aur/electron33-bin
   aur/mailspring-bin
