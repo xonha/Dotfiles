@@ -48,18 +48,18 @@ PKG_INSTALL=(
   keyd
 )
 
-PKG_AUR_INSTALL=(
-  aur/brave-bin
-  aur/visual-studio-code-bin
-  aur/mailspring-bin
-  aur/wdisplays
-  aur/wl-gammarelay-rs
-  aur/wlrctl
-  aur/youtube-music-bin
-  aur/lazydocker-bin
-  aur/ferdium-bin
-  aur/zsh-theme-powerlevel10k-bin-git
-)
+# PKG_AUR_INSTALL=(
+#   aur/brave-bin
+#   aur/visual-studio-code-bin
+#   aur/mailspring-bin
+#   aur/wdisplays
+#   aur/wl-gammarelay-rs
+#   aur/wlrctl
+#   aur/youtube-music-bin
+#   aur/lazydocker-bin
+#   aur/ferdium-bin
+#   aur/zsh-theme-powerlevel10k-bin-git
+# )
 
 PKG_UNINSTALL=(
   archcraft-neofetch
@@ -111,8 +111,8 @@ sudo pacman -Sy --needed --noconfirm archlinux-keyring
 echo "Installing packages..."
 yay -Syu --needed --noconfirm --removemake "${PKG_INSTALL[@]}"
 
-echo "Installing AUR packages..."
-yay -Syu --needed --noconfirm --removemake "${PKG_AUR_INSTALL[@]}"
+# echo "Installing AUR packages..."
+# yay -Syu --needed --noconfirm --removemake "${PKG_AUR_INSTALL[@]}"
 
 echo "Setting up papirus-folders..."
 papirus-folders -C cat-mocha-red --theme Papirus-Dark
