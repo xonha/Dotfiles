@@ -1,5 +1,5 @@
 {
-  "include": "~/.config/hypr/waybar/modules.jsonc",
+  "include": "~/.config/waybar/modules.jsonc",
   "name": "main-bar",
   "id": "main-bar",
   "layer": "top",
@@ -30,6 +30,15 @@
     "clock",
     "custom/mako",
   ],
-  "modules-center": ["hyprland/workspaces", "tray"],
-  "modules-left": ["custom/power", "temperature", "cpu", "memory", "disk"],
+  "modules-center": [
+    "hyprland/workspaces",
+    "tray"
+  ],
+  "modules-left": [
+    "custom/power",
+    "temperature",
+    "cpu",
+    "memory",
+    "disk"
+  ],
 }
