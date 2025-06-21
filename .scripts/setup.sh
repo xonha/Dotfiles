@@ -105,7 +105,7 @@ PKG_UNINSTALL=(
 )
 
 echo "Repo Dotfiles to SSH"
-cd /Dotfiles && git remote set-url origin git@github.com:xonha/Dotfile.git
+git remote set-url origin git@github.com:xonha/Dotfile.git
 
 echo "Installing keyring..."
 sudo pacman -Sy --needed --noconfirm archlinux-keyring
