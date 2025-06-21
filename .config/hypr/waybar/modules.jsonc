@@ -16,7 +16,7 @@
       "urgent": " ",
       // "active": " ",
       // "default": " ",
-      "default": " ",
+      // "default": " ",
     },
     "sort-by-number": true,
   },
