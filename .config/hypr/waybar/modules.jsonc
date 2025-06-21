@@ -23,8 +23,8 @@
   "custom/power": {
     "format": "",
     "tooltip": false,
-    "on-click": "~/.config/hypr/wofi/powermenu.sh",
-    "on-click-right": "~/.config/hypr/wofi/menu.sh",
+    "on-click": "~/.config/wofi/powermenu.sh",
+    "on-click-right": "~/.config/wofi/menu.sh",
   },
   "custom/mako": {
     "exec": "~/.scripts/notifications.sh",
@@ -181,7 +181,7 @@
   "custom/menu": {
     "format": "",
     "tooltip": false,
-    "on-click": "~/.config/hypr/wofi/menu.sh",
+    "on-click": "~/.config/wofi/menu.sh",
   },
   // waybar-disk
   "disk": {

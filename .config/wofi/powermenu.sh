@@ -3,9 +3,9 @@
 ## Wofi Powermenu
 
 ## Files
-CONFIG="$HOME/.config/hypr/wofi/config.conf"
-STYLE="$HOME/.config/hypr/wofi/style.css"
-COLORS="$HOME/.config/hypr/wofi/colors"
+CONFIG="$HOME/.config/wofi/config.conf"
+STYLE="$HOME/.config/wofi/style.css"
+COLORS="$HOME/.config/wofi/colors"
 
 ## Wofi Command
 wofi_command="wofi --show dmenu \
