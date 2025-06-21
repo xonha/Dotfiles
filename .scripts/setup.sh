@@ -104,8 +104,7 @@ PKG_UNINSTALL=(
   thunar
 )
 
-echo "Cloning Dotfiles"
-git clone https://github.com/xonha/Dotfiles
+echo "Repo Dotfiles to SSH"
 cd /Dotfiles && git remote set-url origin git@github.com:xonha/Dotfile.git
 
 echo "Installing keyring..."
