@@ -49,6 +49,7 @@ PKG_INSTALL=(
   keyd
   nvm
   kdeconnect
+  chromium
 )
 
 PKG_AUR_INSTALL=(
