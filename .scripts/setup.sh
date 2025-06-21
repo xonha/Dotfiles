@@ -22,6 +22,7 @@ PKG_INSTALL=(
   network-manager-applet
   npm
   nvm
+  nwg-displays
   papirus-folders-catppuccin-git
   qalculate-gtk
   pipewire
