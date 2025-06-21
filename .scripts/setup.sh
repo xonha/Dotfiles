@@ -3,6 +3,8 @@
 PKG_INSTALL=(
   debugedit
   catppuccin-gtk-theme-mocha
+  chromium
+  earlyoom
   grim
   guake
   hyprland
@@ -11,13 +13,15 @@ PKG_INSTALL=(
   light
   lxappearance
   mpv
-  neovim
-  npm
   nemo
   nemo-audio-tab
   nemo-fileroller
   nemo-preview
   nemo-python
+  neovim
+  network-manager-applet
+  npm
+  nvm
   papirus-folders-catppuccin-git
   qalculate-gtk
   pipewire
@@ -37,6 +41,8 @@ PKG_INSTALL=(
   noisetorch-bin
   lazygit
   hyprpicker
+  kdeconnect
+  keyd
   kooha
   xfce-polkit
   wl-clipboard
@@ -45,11 +51,6 @@ PKG_INSTALL=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-history-substring-search
-  network-manager-applet
-  keyd
-  nvm
-  kdeconnect
-  chromium
 )
 
 PKG_AUR_INSTALL=(
