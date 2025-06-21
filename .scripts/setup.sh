@@ -129,7 +129,7 @@ for package in "${PKG_UNINSTALL[@]}"; do
   yay -Rns "$package" --noconfirm
 done
 
-if [ "$(hostname)" = "t440s" ]; then
+if [ "$(hostname)" = "T440s" ]; then
   sudo cp ~/.keyd.conf /etc/keyd/default.conf
   sudo systemctl enable keyd
   sudo systemctl start keyd
