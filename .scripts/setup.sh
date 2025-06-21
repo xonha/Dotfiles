@@ -3,11 +3,11 @@
 PKG_INSTALL=(
   debugedit
   catppuccin-gtk-theme-mocha
-  github-cli
   grim
   guake
   hyprland
   kitty
+  stow
   light
   lxappearance
   mpv
@@ -50,18 +50,14 @@ PKG_INSTALL=(
 
 PKG_AUR_INSTALL=(
   aur/stremio
-  aur/keeweb-desktop-bin
   aur/visual-studio-code-bin
   aur/mailspring-bin
   aur/google-chrome
-  aur/vesktop-bin
   aur/wdisplays
-  wl-gammarelay-rs-git
-  aur/valent-git
+  aur/wl-gammarelay-rs
   aur/wlrctl
   aur/youtube-music-bin
   aur/lazydocker-bin
-  aur/zen-browser-bin
   aur/ferdium-bin
   aur/zsh-theme-powerlevel10k-bin-git
   aur/nvm
@@ -108,22 +104,18 @@ PKG_UNINSTALL=(
   thunar
 )
 
-echo "Removing existing configurations..."
-sudo rm -rf ~/.config/{hypr,nvim} /tmp/{home,hypr,nvim}
+# echo "Setting up git remotes as SSH..."
+# cd /tmp/home && git remote set-url origin git@github.com:xonha/home.git
+# cd /tmp/hypr && git remote set-url origin git@github.com:xonha/hypr.git
+# cd /tmp/nvim && git remote set-url origin git@github.com:xonha/nvim.git
 
-echo "Cloning configurations..."
-git clone https://github.com/xonha/home /tmp/home
-git clone https://github.com/xonha/hypr /tmp/hypr
-git clone https://github.com/xonha/nvim /tmp/nvim
+# echo "Copying configurations..."
+# cp -r /tmp/home/. ~/
+# cp -r /tmp/hypr /tmp/nvim ~/.config
 
-echo "Setting up git remotes as SSH..."
-cd /tmp/home && git remote set-url origin git@github.com:xonha/home.git
-cd /tmp/hypr && git remote set-url origin git@github.com:xonha/hypr.git
-cd /tmp/nvim && git remote set-url origin git@github.com:xonha/nvim.git
-
-echo "Copying configurations..."
-cp -r /tmp/home/. ~/
-cp -r /tmp/hypr /tmp/nvim ~/.config
+echo "Cloning Dotfiles"
+git clone https://github.com/xonha/Dotfiles
+cd /Dotfiles && git remote set-url origin git@github.com:xonha/Dotfiles.git
 
 echo "Installing keyring..."
 sudo pacman -Sy --needed --noconfirm archlinux-keyring
@@ -135,8 +127,7 @@ echo "Installing AUR packages..."
 yay -Syu --needed --noconfirm --removemake "${PKG_AUR_INSTALL[@]}"
 
 echo "Setting up papirus-folders..."
-papirus-folders -C cat-mocha-mauve --theme Papirus-Dark
-echo "Done."
+papirus-folders -C cat-mocha-red --theme Papirus-Dark
 
 echo "Setting up user input permissions..."
 sudo usermod -a -G input "$USER"
@@ -152,5 +143,3 @@ if [ "$(hostname)" = "t440s" ]; then
   sudo systemctl start keyd
   sudo keyd reload
 fi
-
-echo "Done."
