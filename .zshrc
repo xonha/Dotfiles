@@ -171,7 +171,7 @@ rehash_precmd() {
 add-zsh-hook -Uz precmd rehash_precmd
 
 # virtualenv
-alias venv="source venv/bin/activate"
+alias venv="source .venv/bin/activate"
 
 # omz
 alias zshconfig="geany ~/.zshrc"
