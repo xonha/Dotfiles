@@ -33,6 +33,7 @@ PKG_INSTALL=(
   hyprpaper
   hyprlock
   ttf-jetbrains-mono-nerd
+  thunderbird
   swappy
   docker
   wofi
@@ -66,7 +67,6 @@ PKG_AUR_INSTALL=(
   aur/todoist-appimage
   aur/wl-gammarelay-rs
   aur/electron33-bin
-  aur/mailspring-bin
 )
 
 PKG_UNINSTALL=(
