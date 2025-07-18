@@ -33,7 +33,6 @@ PKG_INSTALL=(
   hyprpaper
   hyprlock
   ttf-jetbrains-mono-nerd
-  thunderbird
   swappy
   docker
   wofi
