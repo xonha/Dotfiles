@@ -3,15 +3,15 @@
 PKG_INSTALL=(
   debugedit
   catppuccin-gtk-theme-mocha
-  chromium
   earlyoom
+  gimp
   grim
   guake
   hyprland
   kitty
   stow
   light
-  lxappearance
+  libreoffice-still
   mpv
   nemo
   nemo-audio-tab
@@ -23,6 +23,7 @@ PKG_INSTALL=(
   npm
   nvm
   nwg-displays
+  nwg-look
   papirus-folders-catppuccin-git
   qalculate-gtk
   pipewire
@@ -47,7 +48,6 @@ PKG_INSTALL=(
   kooha
   xfce-polkit
   wl-clipboard
-  python-virtualenv
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -58,14 +58,11 @@ PKG_AUR_INSTALL=(
   aur/brave-bin
   aur/zsh-theme-powerlevel10k-bin-git
   aur/visual-studio-code-bin
-  aur/youtube-music-bin
   aur/lazydocker-bin
-  aur/ferdium-bin
   aur/wlrctl
   aur/wdisplays
-  aur/todoist-appimage
   aur/wl-gammarelay-rs
-  aur/electron33-bin
+  aur/google-chrome
 )
 
 PKG_UNINSTALL=(
