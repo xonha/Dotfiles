@@ -2,21 +2,26 @@
 
 # Check if application name is provided
 if [ -z "$1" ]; then
-	echo "No application name provided"
-	exit 1
+  echo "No application name provided"
+  exit 1
 fi
 
-# Get the application name
 APP_NAME=$1
 
-# Check if focus name is provided
+# Check if focus class is provided
 if [ -z "$2" ]; then
-	# If not provided, use application name for focus
-	APP_FOCUS_NAME=$APP_NAME
+  FOCUS_CLASS=$APP_NAME
 else
-	# If provided, use it for focus
-	APP_FOCUS_NAME=$2
+  FOCUS_CLASS=$2
 fi
 
-# Execute the command
-wlrctl window focus "$APP_FOCUS_NAME" || hyprctl dispatch exec "$APP_NAME"
+# Check if a window with this class exists
+WINDOW_ADDR=$(hyprctl clients -j | jq -r ".[] | select(.class==\"$FOCUS_CLASS\") | .address" | head -n1)
+
+if [ -n "$WINDOW_ADDR" ]; then
+  # Focus the existing window
+  hyprctl dispatch focuswindow address:$WINDOW_ADDR
+else
+  # No window found → launch the application
+  hyprctl dispatch exec "$APP_NAME"
+fi
