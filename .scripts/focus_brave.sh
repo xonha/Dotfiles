@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-# TAG="ProfileMaisTodos"
+# Usage:
+# ./open_brave_profile.sh "Profile 1" 12
 
-# Check if application name is provided
+# Check if both arguments are provided
 if [ -z "$1" ]; then
-  echo "No application name provided"
+  echo "Usage: $0 <PROFILE_NAME> [WORKSPACE]"
   exit 1
 fi
 
-TAG=$1
+TAG="$1"
+WORKSPACE="${2:-1}" # Default to workspace 1 if not provided
 
 # Check if a window with this tag already exists
 WINDOW_ADDR=$(
@@ -16,11 +18,15 @@ WINDOW_ADDR=$(
 )
 
 if [ -n "$WINDOW_ADDR" ]; then
-  # Focus the existing window
+  # Focus the existing window and move it to the specified workspace
   hyprctl dispatch focuswindow address:$WINDOW_ADDR
+  hyprctl dispatch movetoworkspace "$WORKSPACE"
   exit 0
 else
-  brave --disable-features=WaylandWpColorManagerV1 -profile-directory="$TAG"
-  sleep 0.3
-  hyprctl dispatch tagwindow $TAG
+  # Launch new Brave window for the given profile
+  brave --disable-features=WaylandWpColorManagerV1 -profile-directory="$TAG" &
+  sleep 0.4
+  hyprctl dispatch tagwindow "$TAG"
+  sleep 0.1
+  hyprctl dispatch movetoworkspace "$WORKSPACE"
 fi
