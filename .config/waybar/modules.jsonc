@@ -12,8 +12,8 @@
       "10": " ",
       "11": "󰊻 ",
       "12": "󱅃 ",
-      "13": " ",
-      "14": " ",
+      "13": " ",
+      "14": " ",
       "15": " ",
       "16": " ",
       "urgent": " ",
@@ -81,7 +81,12 @@
     "rotate": 0,
     //"device": "amdgpu_bl0",
     "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", ""],
+    "format-icons": [
+      "",
+      "",
+      "",
+      ""
+    ],
     // Commands to execute on events
     "on-click": "",
     "on-click-middle": "",
@@ -112,7 +117,18 @@
     "format-full": "{icon} Full",
     "format-good": "",
     "format-alt": "{icon} {time}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂"
+    ],
     "format-time": "{H}h {M}min",
     "tooltip": true,
   },
@@ -153,7 +169,11 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{icon} Temp: {temperatureC}°C",
-    "format-icons": ["", "", ""],
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
   },
   // waybar-cpu
   "cpu": {
