@@ -42,6 +42,7 @@ PKG_INSTALL=(
   mako
   noisetorch-bin
   lazygit
+  lazydocker
   hyprpicker
   kdeconnect
   keyd
@@ -56,13 +57,12 @@ PKG_INSTALL=(
 
 PKG_AUR_INSTALL=(
   aur/brave-bin
+  aur/google-chrome
   aur/zsh-theme-powerlevel10k-bin-git
   aur/visual-studio-code-bin
-  aur/lazydocker-bin
   aur/wlrctl
   aur/wdisplays
   aur/wl-gammarelay-rs
-  aur/google-chrome
 )
 
 PKG_UNINSTALL=(
