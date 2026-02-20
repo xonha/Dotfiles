@@ -59,6 +59,7 @@ PKG_AUR_INSTALL=(
   aur/brave-bin
   aur/google-chrome
   aur/zsh-theme-powerlevel10k-bin-git
+  aur/zsh-auto-venv-git
   aur/visual-studio-code-bin
   aur/wlrctl
   aur/wdisplays
