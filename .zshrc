@@ -195,6 +195,7 @@ alias gb='git checkout'
 alias gnb='git checkout -b'
 
 alias purge='sudo pacman -Rns $(pacman -Qdtq)'
+alias update='sudo pacman -Syu && sudo pacman -Rns $(pacman -Qdtq)'
 
 # systemctl
 alias s='sudo systemctl'
