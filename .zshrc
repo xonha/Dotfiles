@@ -194,7 +194,7 @@ alias gc='git commit -m'
 alias gb='git checkout'
 alias gnb='git checkout -b'
 
-alias up='yay --noconfirm --removemake && sudo pacman -Rns $(pacman -Qdtq)'
+alias up='yay --noconfirm --removemake && sudo pacman -Rns $(pacman -Qdtq) --noconfirm'
 alias del='yay -R'
 alias add='yay --noconfirm --removemake'
 
