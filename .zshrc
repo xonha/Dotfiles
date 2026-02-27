@@ -175,10 +175,6 @@ add-zsh-hook -Uz precmd rehash_precmd
 # virtualenv
 alias venv="source .venv/bin/activate"
 
-# omz
-alias zshconfig="geany ~/.zshrc"
-alias ohmyzsh="nemo ~/.oh-my-zsh"
-
 # ls
 alias l='ls -lh'
 alias ll='ls -lah'
@@ -189,17 +185,12 @@ alias lg='ls -l --group-directories-first'
 
 # git
 alias g='git'
-alias ga='git add'
-alias gc='git commit -m'
-alias gb='git checkout'
-alias gnb='git checkout -b'
 
-alias up='yay --noconfirm --removemake && sudo pacman -Rns $(pacman -Qdtq) --noconfirm'
-alias del='yay -R'
+alias update='yay --noconfirm --removemake && sudo pacman -Rns $(pacman -Qdtq) --noconfirm'
+alias up='update'
+alias delete='yay -R --noconfirm'
+alias del='delete'
 alias add='yay --noconfirm --removemake'
-
-# systemctl
-alias s='sudo systemctl'
 
 export PATH="/home/henrique/.detaspace/bin:$PATH"
 
