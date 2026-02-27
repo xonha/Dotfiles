@@ -1,6 +1,6 @@
 ## Mako configuration file
 # Notification monitor
-output=HDMI-A-1
+output=DP-4
 
 # GLOBAL CONFIGURATION OPTIONS
 max-history=100

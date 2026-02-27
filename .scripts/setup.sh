@@ -64,6 +64,8 @@ PKG_AUR_INSTALL=(
   aur/wlrctl
   aur/wdisplays
   aur/wl-gammarelay-rs
+  aur/microsoft-edge-stable-bin
+  aur/profile-sync-daemon-edge-stable
 )
 
 PKG_UNINSTALL=(
