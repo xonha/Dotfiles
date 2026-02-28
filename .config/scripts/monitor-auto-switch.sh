@@ -2,7 +2,7 @@
 
 LAPTOP_MONITOR="eDP-1"
 LAPTOP_CONFIG="preferred,auto,1"
-CHECK_INTERVAL_SECONDS=3
+CHECK_INTERVAL_SECONDS=5
 
 apply_layout() {
   local monitor
