@@ -30,7 +30,7 @@
     "on-click-right": "~/.config/wofi/menu.sh",
   },
   "custom/mako": {
-    "exec": "~/.scripts/notifications.sh",
+    "exec": "~/.config/scripts/notifications.sh",
     "interval": "once",
     "on-click": "makoctl mode -t notifications",
     "format": "{icon}",
@@ -247,7 +247,7 @@
     // Commands to execute on events
     "on-click": "pulsemixer --toggle-mute",
     "on-click-right": "pavucontrol --tab=3",
-    "on-click-middle": "~/.scripts/switchaudio.sh",
+    "on-click-middle": "~/.config/scripts/switchaudio.sh",
   },
   "pulseaudio#output": {
     "format": "{format_source}",
@@ -255,9 +255,9 @@
     "format-source": " {volume}%",
     "format-source-muted": " ",
     // Commands to execute on events
-    "on-scroll-up": "~/.scripts/volume.sh --inc-mic",
-    "on-scroll-down": "~/.scripts/volume.sh --dec-mic",
-    "on-click": "~/.scripts/volume.sh --toggle-mic",
+    "on-scroll-up": "~/.config/scripts/volume.sh --inc-mic",
+    "on-scroll-down": "~/.config/scripts/volume.sh --dec-mic",
+    "on-click": "~/.config/scripts/volume.sh --toggle-mic",
     "on-click-right": "pavucontrol --tab=4",
   },
   // waybar-idle-inhibitor
@@ -300,7 +300,7 @@
 //   "scroll-step": 5.0,
 //   // Commands to execute on events
 //   "on-click": "pulsemixer --toggle-mute",
-//   "on-click-right": "~/.scripts/volume.sh --toggle-mic",
+//   "on-click-right": "~/.config/scripts/volume.sh --toggle-mic",
 //   "on-click-middle": "pavucontrol",
 //   "smooth-scrolling-threshold": 1.0
 // },
