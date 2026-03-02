@@ -1,0 +1,58 @@
+{
+   "checksum": "917709c1859372aaa71394fe5d054d65",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13416967196198376",
+            "date_last_used": "0",
+            "guid": "24c92862-6d47-4d7b-83ae-e98c4d4b00f9",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Mail",
+            "type": "url",
+            "url": "https://outlook.office.com/mail/"
+         }, {
+            "date_added": "13416967264709079",
+            "date_last_used": "13416967270484121",
+            "guid": "ecdbe636-5c7e-4cb2-b7d2-8e35622ecfa3",
+            "id": "6",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Teams",
+            "type": "url",
+            "url": "https://teams.cloud.microsoft/"
+         } ],
+         "date_added": "13416965123126759",
+         "date_last_used": "0",
+         "date_modified": "13416967264709079",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13416965123126759",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13416965123126759",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

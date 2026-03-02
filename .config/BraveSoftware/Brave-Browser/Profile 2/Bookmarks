@@ -1,0 +1,181 @@
+{
+  "checksum": "fc0043271b123e1e81c5429edb8c61d9",
+  "roots": {
+    "bookmark_bar": {
+      "children": [
+        {
+          "date_added": "13405781863000000",
+          "date_last_used": "13416967245811940",
+          "guid": "f3af5565-40e3-4762-b351-39604f288d2e",
+          "id": "5",
+          "name": "Mail",
+          "type": "url",
+          "url": "https://mail.google.com/mail/u/0/#inbox"
+        },
+        {
+          "date_added": "13405008736000000",
+          "date_last_used": "13416967310296239",
+          "guid": "3ab06c4f-a5b0-4484-8081-89529c68494e",
+          "id": "6",
+          "name": "Slack",
+          "type": "url",
+          "url": "https://app.slack.com/client/TP5K4K3C5/CP55BAQJG"
+        },
+        {
+          "date_added": "13404395866000000",
+          "date_last_used": "0",
+          "guid": "a1b0b876-f8f9-4cb2-ae97-f79a06b32e6d",
+          "id": "7",
+          "name": "GitHub",
+          "type": "url",
+          "url": "https://github.com/MaisTodos"
+        },
+        {
+          "date_added": "13404395886000000",
+          "date_last_used": "0",
+          "guid": "46faf1ef-ad12-464d-a343-5bc2df3767a9",
+          "id": "8",
+          "name": "AWS",
+          "type": "url",
+          "url": "https://maistodos-sso.awsapps.com/start/#/?tab=accounts"
+        },
+        {
+          "date_added": "13406122841000000",
+          "date_last_used": "0",
+          "guid": "02763d80-5d6e-4ba6-a087-59b191459a3e",
+          "id": "9",
+          "name": "Jira",
+          "type": "url",
+          "url": "https://maistodosti.atlassian.net/jira/software/c/projects/CNT/boards/2616"
+        },
+        {
+          "date_added": "13404395978000000",
+          "date_last_used": "0",
+          "guid": "f777c883-53da-411b-a2a3-7555b08fbe80",
+          "id": "10",
+          "name": "FolhaCerta",
+          "type": "url",
+          "url": "https://portal.folhacerta.com/#/dashboard/minhas-rotinas/web-ponto"
+        },
+        {
+          "date_added": "13413405987000000",
+          "date_last_used": "0",
+          "guid": "c4f739ea-a89e-4799-b3bf-9a3e0c069017",
+          "id": "11",
+          "name": "Convenia",
+          "type": "url",
+          "url": "https://colaborador.convenia.com.br/painel"
+        },
+        {
+          "date_added": "13413495085000000",
+          "date_last_used": "0",
+          "guid": "00893b67-ec28-4a6b-9f99-d053d83bab9a",
+          "id": "12",
+          "name": "Qulture.Rocks",
+          "type": "url",
+          "url": "https://app.qulture.rocks/#/company/5885/one-page/contracts/1835958"
+        },
+        {
+          "date_added": "13404430327000000",
+          "date_last_used": "0",
+          "guid": "abcc8318-e378-4c52-b791-ac10c00e3779",
+          "id": "13",
+          "name": "ChatGPT",
+          "type": "url",
+          "url": "https://chatgpt.com/?model=auto"
+        },
+        {
+          "date_added": "13404839151000000",
+          "date_last_used": "0",
+          "guid": "ab24c350-c09f-4a62-b721-966c41d89895",
+          "id": "14",
+          "name": "Hacker Rangers",
+          "type": "url",
+          "url": "https://maistodos.hackerrangers.com/#/inicio"
+        },
+        {
+          "date_added": "13414658036000000",
+          "date_last_used": "0",
+          "guid": "69ec8693-3b61-4c8b-8480-c133fdaee03a",
+          "id": "15",
+          "name": "Datadog",
+          "type": "url",
+          "url": "https://app.datadoghq.com/apm/home"
+        },
+        {
+          "date_added": "13406990528000000",
+          "date_last_used": "0",
+          "guid": "20e495d9-e8ea-4d84-a9bd-aea4bb3b40ab",
+          "id": "16",
+          "name": "EasyRetro",
+          "type": "url",
+          "url": "https://easyretro.io/publicboard/iU0Yv0Wj2wW2K9Tg44A7dw6SGB63/e080d25c-52b6-457e-8245-ba6e2232f040"
+        },
+        {
+          "date_added": "13412369387000000",
+          "date_last_used": "0",
+          "guid": "6bffece1-9025-45db-9193-f28100354501",
+          "id": "17",
+          "name": "Pix Automático e MED – Figma",
+          "type": "url",
+          "url": "https://www.figma.com/design/5pk1dDlk4EZQ0S25U05zMU/Pix-Autom%C3%A1tico-e-MED?node-id=7001-3343&p=f&t=2W8O5hGcmKyVYj1G-0"
+        },
+        {
+          "date_added": "13412371751000000",
+          "date_last_used": "0",
+          "guid": "c92d2961-856a-47f8-b455-c78b16831a4b",
+          "id": "18",
+          "name": "Miro",
+          "type": "url",
+          "url": "https://miro.com/app/board/uXjVGU321vc=/?share_link_id=89509514427"
+        },
+        {
+          "date_added": "13412371975000000",
+          "date_last_used": "0",
+          "guid": "a1170a8c-892e-465d-8237-fb34f4fe938d",
+          "id": "19",
+          "name": "Pix automático",
+          "type": "url",
+          "url": "https://docs.bankly.com.br/docs/pix-automatico"
+        },
+        {
+          "date_added": "13414165503000000",
+          "date_last_used": "0",
+          "guid": "0a30a7b4-db32-400f-8adb-691f535490c6",
+          "id": "20",
+          "name": "API keys | Google AI Studio",
+          "type": "url",
+          "url": "https://aistudio.google.com/api-keys"
+        }
+      ],
+      "date_added": "13416964813453054",
+      "date_last_used": "0",
+      "date_modified": "0",
+      "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+      "id": "1",
+      "name": "Bookmarks",
+      "type": "folder"
+    },
+    "other": {
+      "children": [],
+      "date_added": "13416964813453054",
+      "date_last_used": "0",
+      "date_modified": "0",
+      "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+      "id": "2",
+      "name": "Other bookmarks",
+      "type": "folder"
+    },
+    "synced": {
+      "children": [],
+      "date_added": "13416964813453054",
+      "date_last_used": "0",
+      "date_modified": "0",
+      "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+      "id": "3",
+      "name": "Mobile bookmarks",
+      "type": "folder"
+    }
+  },
+  "version": 1
+}
