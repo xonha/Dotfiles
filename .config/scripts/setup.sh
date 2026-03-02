@@ -6,7 +6,6 @@ PKG_INSTALL=(
   earlyoom
   gimp
   grim
-  guake
   hyprland
   kitty
   stow
@@ -57,15 +56,12 @@ PKG_INSTALL=(
 
 PKG_AUR_INSTALL=(
   aur/brave-bin
-  aur/google-chrome
   aur/zsh-theme-powerlevel10k-bin-git
   aur/zsh-auto-venv-git
   aur/visual-studio-code-bin
   aur/wlrctl
   aur/wdisplays
   aur/wl-gammarelay-rs
-  aur/microsoft-edge-stable-bin
-  aur/profile-sync-daemon-edge-stable
 )
 
 PKG_UNINSTALL=(
