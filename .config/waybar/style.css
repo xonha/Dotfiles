@@ -166,12 +166,13 @@ window#waybar.hidden {
 @define-color Text #cdd6f4;
 @define-color Subtext1 #bac2de;
 @define-color Subtext0 #a6adc8;
-@define-color Overlay2 #9399b2;
-@define-color Overlay1 #7f849c;
-@define-color Overlay0 #6c7086;
-@define-color Surface2 #585b70;
-@define-color Surface1 #45475a;
-@define-color Surface0 #313244;
-@define-color Base #1e1e2e;
-@define-color Mantle #181825;
-@define-color Crust #11111b;
+
+@define-color Base #121212;
+@define-color Crust #0f0f0f;
+@define-color Mantle #151515;
+@define-color Overlay0 #3f3f3f;
+@define-color Overlay1 #4f4f4f;
+@define-color Overlay2 #5f5f5f;
+@define-color Surface0 #1c1c1c;
+@define-color Surface1 #232323;
+@define-color Surface2 #2a2a2a;
