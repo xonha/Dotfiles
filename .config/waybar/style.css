@@ -167,12 +167,14 @@ window#waybar.hidden {
 @define-color Subtext1 #bac2de;
 @define-color Subtext0 #a6adc8;
 
-@define-color Base #121212;
+@define-color Base #151515;
 @define-color Crust #0f0f0f;
-@define-color Mantle #151515;
+@define-color Mantle #121212;
+
 @define-color Overlay0 #3f3f3f;
 @define-color Overlay1 #4f4f4f;
 @define-color Overlay2 #5f5f5f;
+
 @define-color Surface0 #1c1c1c;
 @define-color Surface1 #232323;
 @define-color Surface2 #2a2a2a;
