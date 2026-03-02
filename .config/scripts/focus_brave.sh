@@ -1,32 +1,48 @@
 #!/usr/bin/env bash
 
-# Usage:
-# ./open_brave_profile.sh "Profile 1" 12
+# Focus a Brave profile in a dedicated workspace
+# Usage: ./focus_brave.sh "Profile 1" 2
 
-# Check if both arguments are provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <PROFILE_NAME> [WORKSPACE]"
+PROFILE="$1"
+WORKSPACE="$2"
+
+if [ -z "$PROFILE" ] || [ -z "$WORKSPACE" ]; then
+  echo "Usage: $0 <PROFILE_NAME> <WORKSPACE_NUMBER>"
   exit 1
 fi
 
-TAG="$1"
-WORKSPACE="${2:-1}" # Default to workspace 1 if not provided
+# Function to get any Brave window in a specific workspace
+get_brave_in_workspace() {
+  local ws=$1
+  hyprctl clients -j 2>/dev/null | jq -r ".[] | select(.workspace.id == $ws) | select(.class | test(\"brave\")) | .address" | head -n1
+}
 
-# Check if a window with this tag already exists
-WINDOW_ADDR=$(
-  hyprctl clients -j | jq -r --arg TAG "$TAG" '.[] | select(.tags | index($TAG)) | .address' | head -n1
-)
+# Check if window exists in target workspace
+EXISTING=$(get_brave_in_workspace "$WORKSPACE")
 
-if [ -n "$WINDOW_ADDR" ]; then
-  # Focus the existing window and move it to the specified workspace
-  hyprctl dispatch focuswindow address:$WINDOW_ADDR
-  hyprctl dispatch movetoworkspace "$WORKSPACE"
+if [ -n "$EXISTING" ]; then
+  # Focus the existing window
+  hyprctl dispatch focuswindow "address:$EXISTING"
   exit 0
+fi
+
+# No window in target workspace, launch Brave with the specified profile
+brave --disable-features=WaylandWpColorManagerV1 --profile-directory="$PROFILE" > /dev/null 2>&1 &
+
+# Wait for the window to be created
+sleep 1.5
+
+# Get all Brave windows
+ALL_BRAVE=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class | test("brave")) | .address')
+
+# Get the most recently created Brave window (last one)
+NEW_WINDOW=$(echo "$ALL_BRAVE" | tail -n1)
+
+if [ -n "$NEW_WINDOW" ]; then
+  # Move it to the target workspace
+  hyprctl dispatch movetoworkspace "$WORKSPACE,address:$NEW_WINDOW"
+  sleep 0.2
+  hyprctl dispatch focuswindow "address:$NEW_WINDOW"
 else
-  # Launch new Brave window for the given profile
-  brave --disable-features=WaylandWpColorManagerV1 -profile-directory="$TAG" &
-  sleep 0.4
-  hyprctl dispatch tagwindow "$TAG"
-  sleep 0.1
   hyprctl dispatch movetoworkspace "$WORKSPACE"
 fi
