@@ -30,7 +30,7 @@ fi
 brave --profile-directory="$PROFILE" > /dev/null 2>&1 &
 
 # Wait for the window to be created
-sleep 0.5
+sleep 1.5
 
 # Get all Brave windows
 ALL_BRAVE=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class | test("brave")) | .address')
