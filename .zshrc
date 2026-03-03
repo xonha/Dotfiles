@@ -20,7 +20,6 @@ export ENCORE_INSTALL="/home/henrique/.encore"
 export PATH="$ENCORE_INSTALL/bin:$PATH"
 
 export OZONE_PLATFORM_HINT=wayland
-export CHROME_FLAGS="--disable-features=WaylandWpColorManagerV1"
 
 v() {
   if [ -d "$1" ]; then
