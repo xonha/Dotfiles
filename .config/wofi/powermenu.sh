@@ -28,38 +28,29 @@ cdialog() {
   yad --title='Confirm?' --borders=15 --center --fixed --undecorated --button=Yes:0 --button=No:1 --text="Are you sure?" --text-align=center
 }
 
+confirm_and_run() {
+  cdialog || return 1
+  "$@"
+}
+
 # Variable passed to rofi
 open_menu() {
+  local options chosen
   options="$lock\n$logout\n$reboot\n$shutdown"
 
   chosen="$(echo -e "$options" | $wofi_command --prompt "UP - $uptime")"
-  case $chosen in
-  $shutdown)
-    cdialog
-    if [[ "$?" == 0 ]]; then
-      hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl poweroff'
-    else
-      exit
-    fi
+  case "$chosen" in
+  "$shutdown")
+    confirm_and_run hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl poweroff'
     ;;
-  $reboot)
-    cdialog
-    if [[ "$?" == 0 ]]; then
-      hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'
-    else
-      exit
-    fi
+  "$reboot")
+    confirm_and_run hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'
     ;;
-  $lock)
+  "$lock")
     hyprlock
     ;;
-  $logout)
-    cdialog
-    if [[ "$?" == 0 ]]; then
-      hyprshutdown
-    else
-      exit
-    fi
+  "$logout")
+    confirm_and_run hyprshutdown
     ;;
   esac
 }
