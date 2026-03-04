@@ -134,7 +134,7 @@ window#waybar.hidden {
 #custom-menu,
 #custom-mako,
 #custom-power,
-#keyboard-state,
+#keyboard-state {
   padding: 0px 8px;
 }
 
