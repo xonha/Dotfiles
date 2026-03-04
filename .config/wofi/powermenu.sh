@@ -37,7 +37,7 @@ open_menu() {
   $shutdown)
     cdialog
     if [[ "$?" == 0 ]]; then
-      systemctl poweroff
+      hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl poweroff'
     else
       exit
     fi
@@ -45,18 +45,18 @@ open_menu() {
   $reboot)
     cdialog
     if [[ "$?" == 0 ]]; then
-      systemctl reboot
+      hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'
     else
       exit
     fi
     ;;
   $lock)
-    hyprlock --config ~/.config/hypr/lockscreen/hyprlock.conf
+    hyprlock
     ;;
   $logout)
     cdialog
     if [[ "$?" == 0 ]]; then
-      hyprctl dispatch exit 0
+      hyprshutdown
     else
       exit
     fi
