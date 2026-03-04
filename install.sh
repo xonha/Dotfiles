@@ -31,10 +31,13 @@ PKG_INSTALL=(
   slurp
   hyprpaper
   hyprlock
+  hyprtoolkit
+  hyprlauncher
+  hyprshutdown
+  hypridle
   ttf-jetbrains-mono-nerd
   swappy
   docker
-  wofi
   wget
   waybar
   mako
@@ -78,6 +81,7 @@ PKG_UNINSTALL=(
   openbox
   plank
   rofi
+  wofi
   xcolor
   alacritty
   ranger
