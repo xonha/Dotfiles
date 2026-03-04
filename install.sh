@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 PKG_INSTALL=(
+  brightnessctl
   debugedit
   earlyoom
   gimp
   grim
   hyprland
   kitty
+  kooha
   stow
   light
   libreoffice-still

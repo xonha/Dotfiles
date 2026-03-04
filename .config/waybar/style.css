@@ -68,14 +68,6 @@ window#waybar.hidden {
   -gtk-icon-effect: highlight;
 }
 
-#custom-display-temperature {
-  color: @Sapphire;
-}
-
-#custom-display-brightness {
-  color: @Sky;
-}
-
 #backlight {
   color: @Sky;
 }
@@ -143,8 +135,6 @@ window#waybar.hidden {
 #custom-mako,
 #custom-power,
 #keyboard-state,
-#custom-display-temperature,
-#custom-display-brightness {
   padding: 0px 8px;
 }
 
