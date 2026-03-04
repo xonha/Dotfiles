@@ -2,7 +2,6 @@
 
 PKG_INSTALL=(
   debugedit
-  catppuccin-gtk-theme-mocha
   earlyoom
   gimp
   grim
@@ -43,9 +42,9 @@ PKG_INSTALL=(
   lazygit
   lazydocker
   hyprpicker
+  hyprsunset
   kdeconnect
   keyd
-  kooha
   xfce-polkit
   wl-clipboard
   zsh-completions
@@ -60,12 +59,9 @@ PKG_AUR_INSTALL=(
   aur/zsh-auto-venv-git
   aur/visual-studio-code-bin
   aur/wlrctl
-  aur/wdisplays
-  aur/wl-gammarelay-rs
 )
 
 PKG_UNINSTALL=(
-  archcraft-neofetch
   archcraft-omz
   archcraft-hooks-zsh
   archcraft-ranger
@@ -105,11 +101,23 @@ PKG_UNINSTALL=(
   thunar
 )
 
-echo "Repo Dotfiles to SSH"
-git remote set-url origin git@github.com:xonha/Dotfile.git
-
 echo "Installing keyring..."
 sudo pacman -Sy --needed --noconfirm archlinux-keyring
+
+echo "Installing yay dependencies..."
+sudo pacman -S --needed --noconfirm git base-devel
+
+echo "Cloning and installing yay..."
+if [[ ! -d yay ]]; then
+  git clone https://aur.archlinux.org/yay.git
+fi
+
+pushd yay >/dev/null
+makepkg -si --noconfirm
+popd >/dev/null
+
+echo "Removing yay directory..."
+rm -rf yay
 
 echo "Installing packages..."
 yay -Syu --needed --noconfirm --removemake "${PKG_INSTALL[@]}"
@@ -123,14 +131,13 @@ papirus-folders -C cat-mocha-red --theme Papirus-Dark
 echo "Setting up user input permissions..."
 sudo usermod -a -G input "$USER"
 
+echo "Stowing dotfiles..."
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+pushd "$DOTFILES_DIR" >/dev/null
+stow .
+popd >/dev/null
+
 echo "Uninstalling packages one by one..."
 for package in "${PKG_UNINSTALL[@]}"; do
   yay -Rns "$package" --noconfirm
 done
-
-if [ "$(hostname)" = "T440s" ]; then
-  sudo cp ~/.keyd.conf /etc/keyd/default.conf
-  sudo systemctl enable keyd
-  sudo systemctl start keyd
-  sudo keyd reload
-fi
