@@ -83,11 +83,6 @@
   // waybar-battery
   "battery": {
     "interval": 60,
-    "align": 0,
-    "rotate": 0,
-    // "bat": "BAT1",
-    "adapter": "ACAD",
-    "design-capacity": false,
     "full-at": 100,
     "states": {
       "good": 70,
@@ -152,7 +147,7 @@
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{icon} Temp: {temperatureC}°C",
+    "format": "{icon} TMP {temperatureC}°C",
     "format-icons": [
       "",
       "",
@@ -162,7 +157,7 @@
   // waybar-cpu
   "cpu": {
     "interval": 5,
-    "format": " Load: {usage}%",
+    "format": " CPU {usage}%",
   },
   // waybar-custom
   "custom/menu": {
@@ -173,12 +168,13 @@
   // waybar-disk
   "disk": {
     "interval": 30,
-    "format": " Free: {free}",
+    "format": " ROM {free}",
   },
   // waybar-memory
   "memory": {
     "interval": 10,
-    "format": " Used: {used:0.1f}G",
+    "format": " RAM {used:0.1f}GiB",
+    "tooltip-format": "Using {used:0.1f}GiB out of {total:0.1f}GiB ({percentage}%)",
   },
   // waybar-network
   "network": {
