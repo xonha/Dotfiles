@@ -34,7 +34,7 @@ layer=overlay
 anchor=top-left
 
 background-color=#151515
-text-color=#d0d0d0
+text-color=#ffffff
 border-color=#1c1c1c
 progress-color=over #89b4fa
 

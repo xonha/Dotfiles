@@ -8584,7 +8584,7 @@ widget text/foreground color */
 @define-color theme_fg_color #FFFFFF;
 /*
 text color for entries, views and content in general */
-@define-color theme_text_color #FFFFFF;
+@define-color theme_text_color #ffffff;
 /*
 widget base background color */
 @define-color theme_bg_color #151515;
@@ -8608,10 +8608,10 @@ insensitive text widgets and the like base background color */
 @define-color insensitive_base_color #0f0f0f;
 /*
 widget text/foreground color on backdrop windows */
-@define-color theme_unfocused_fg_color #FFFFFF;
+@define-color theme_unfocused_fg_color #b8b8b8;
 /*
 text color for entries, views and content in general on backdrop windows */
-@define-color theme_unfocused_text_color #FFFFFF;
+@define-color theme_unfocused_text_color #ffffff;
 /*
 widget base background color on backdrop windows */
 @define-color theme_unfocused_bg_color #151515;
@@ -8657,7 +8657,7 @@ read if you used those and something break with a version upgrade you're on your
 /*
 FIXME this is really an API */
 @define-color content_view_bg #151515;
-@define-color placeholder_text_color #bcbcc0;
+@define-color placeholder_text_color #9e9e9e;
 /* Very contrasty background for text views (@theme_text_color foreground) */
 @define-color text_view_bg #151515;
 @define-color budgie_tasklist_indicator_color rgba(255, 255, 255, 0.3);

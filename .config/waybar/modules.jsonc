@@ -139,7 +139,7 @@
         "weekdays": "<span color='#b4befe'><b>{}</b></span>",
         "weeks": "<span color='#89b4fa'><b>W{}</b></span>",
         "today": "<span background='#74c7ec' color='#11111b'><b><u>{}</u></b></span>",
-        "days": "<span color='#d0d0d0'><b>{}</b></span>",
+        "days": "<span color='#ffffff'><b>{}</b></span>",
       },
     },
     "on-scroll-up": "pulsemixer --max-volume 100 --change-volume +5",
