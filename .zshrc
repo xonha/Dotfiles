@@ -194,7 +194,7 @@ alias add='yay --noconfirm --removemake'
 alias maistodos='ssh maistodos'
 alias console='ssh console'
 alias laptop='ssh laptop'
-alias devbox='ssh console'
+alias devbox='ssh devbox'
 
 export PATH="/home/henrique/.detaspace/bin:$PATH"
 

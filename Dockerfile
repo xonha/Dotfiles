@@ -21,13 +21,27 @@ RUN pacman -Sy --noconfirm \
         npm \
     && pacman -Scc --noconfirm
 
-# Create a root-equivalent development user named henrique.
-ARG USERNAME=henrique
-RUN useradd -m -o -u 0 -g 0 -s /bin/bash ${USERNAME} \
-    && echo "${USERNAME}:plambas" | chpasswd
+# Configure SSH server
+RUN ssh-keygen -A \
+    && sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-USER ${USERNAME}
+# Create development user named henrique with sudo privileges.
+ARG USERNAME=henrique
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g ${GID} ${USERNAME} \
+    && useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} \
+    && echo "${USERNAME}:plambas" | chpasswd \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 440 /etc/sudoers.d/${USERNAME}
+
+# Create startup script to run SSH and keep container alive (as root)
+RUN echo '#!/bin/bash' > /start.sh \
+    && echo '/usr/sbin/sshd' >> /start.sh \
+    && echo 'exec sleep infinity' >> /start.sh \
+    && chmod +x /start.sh
 WORKDIR /workspace
 
-# Keep the container alive for shell-based development.
-CMD ["sleep", "infinity"]
+# Start SSH server and keep container alive
+CMD ["/start.sh"]

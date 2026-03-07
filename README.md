@@ -16,10 +16,11 @@ This repository includes a `Dockerfile` for creating an Arch Linux development c
 - **Container Name:** `devbox`
 - **Hostname:** `devbox`
 - **Memory Limit:** 14GB RAM + 14GB Swap
-- **User:** `henrique` (root-equivalent, UID 0, GID 0)
+- **User:** `henrique` (UID 1000, with passwordless sudo)
 - **Password:** `plambas`
 - **Workspace:** `~/devbox/workspace` mounted at `/workspace` in container
 - **Auto-start:** Enabled via systemd user service
+- **SSH Access:** Port 2222 (host) → Port 22 (container)
 
 ### Installed Packages
 
@@ -45,34 +46,50 @@ FROM archlinux:latest
 # Keep package metadata fresh and install common development tools.
 RUN pacman -Sy --noconfirm \
     && pacman -S --noconfirm --needed \
-        base-devel \
-        git \
-        curl \
-        wget \
-        openssh \
-        sudo \
-        neovim \
-        less \
-        which \
-        unzip \
-        zip \
-        ca-certificates \
-        python \
-        python-pip \
-        nodejs \
-        npm \
+           base-devel \
+           git \
+           curl \
+           wget \
+           openssh \
+           sudo \
+           neovim \
+           less \
+           which \
+           unzip \
+           zip \
+           ca-certificates \
+           python \
+           python-pip \
+           nodejs \
+           npm \
     && pacman -Scc --noconfirm
 
-# Create a root-equivalent development user named henrique.
+# Configure SSH server
+RUN ssh-keygen -A \
+    && sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# Create development user named henrique with sudo privileges
 ARG USERNAME=henrique
-RUN useradd -m -o -u 0 -g 0 -s /bin/bash ${USERNAME} \
-    && echo "${USERNAME}:plambas" | chpasswd
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g ${GID} ${USERNAME} \
+    && useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} \
+    && echo "${USERNAME}:plambas" | chpasswd \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 440 /etc/sudoers.d/${USERNAME}
+
+# Create startup script to run SSH and keep container alive (must run as root)
+RUN echo '#!/bin/bash' > /start.sh \
+    && echo '/usr/sbin/sshd' >> /start.sh \
+    && echo 'exec sleep infinity' >> /start.sh \
+    && chmod +x /start.sh
 
 USER ${USERNAME}
-WORKDIR /workspace
+WORKDIR /home/${USERNAME}
 
-# Keep the container alive for shell-based development.
-CMD ["sleep", "infinity"]
+# Start the SSH server and keep the container running
+CMD ["/start.sh"]
 EOF
 
 # Build the image
@@ -85,17 +102,20 @@ podman build -t devbox:latest "$HOME/devbox-image"
 # Remove any existing devbox container
 podman rm -f devbox >/dev/null 2>&1 || true
 
-# Create the container with resource limits
+# Create the container with resource limits and SSH port forwarding
 podman create \
     --name devbox \
     --hostname devbox \
     --memory 14g \
     --memory-swap 14g \
     --pids-limit 4096 \
+    -p 2222:22 \
     -v "$HOME/devbox/workspace:/workspace:Z" \
     -w /workspace \
     localhost/devbox:latest
 ```
+
+**Note:** Port 2222 on the host is forwarded to port 22 (SSH) in the container.
 
 #### 3. Enable Auto-Start with Systemd
 
@@ -133,13 +153,31 @@ podman exec -it devbox whoami
 
 ### Accessing the Container
 
+**Via Podman exec (from Bazzite host):**
 ```bash
-# From the Bazzite host
 podman exec -it devbox bash
+```
 
-# Or from a remote machine (after SSH to Bazzite)
-ssh henrique@<bazzite-ip>
-podman exec -it devbox bash
+**Via SSH (from any machine on Tailscale):**
+
+Add this to your `~/.ssh/config` on your local machine:
+```
+Host devbox
+    HostName <bazzite-tailscale-ip>
+    Port 2222
+    User henrique
+```
+
+Then connect with:
+```bash
+ssh henrique@devbox
+# Password: plambas
+```
+
+To find your Bazzite Tailscale IP:
+```bash
+# On the Bazzite machine
+tailscale ip -4
 ```
 
 ### Managing the Service
@@ -192,6 +230,38 @@ systemctl --user restart devbox.service
 - Verify with: `podman inspect devbox | grep -i memory`
 - Note: CPU pinning (`--cpuset-cpus`) requires rootful Podman
 
+### SSH Access Setup
+
+The container runs an SSH server on port 22, which is forwarded to port 2222 on the Bazzite host.
+
+**Configure your local machine:**
+
+1. Get the Bazzite Tailscale IP:
+   ```bash
+   # On Bazzite
+   tailscale ip -4
+   ```
+
+2. Add SSH config entry on your local machine (`~/.ssh/config`):
+   ```
+   Host devbox
+       HostName <bazzite-tailscale-ip>
+       Port 2222
+       User henrique
+   ```
+
+3. Connect:
+   ```bash
+   ssh henrique@devbox
+   # Password: plambas
+   ```
+
+**Optional: Set up SSH key authentication:**
+```bash
+# From your local machine
+ssh-copy-id -p 2222 henrique@<bazzite-tailscale-ip>
+```
+
 ### Notes for AI Agents
 
 When replicating this setup:
@@ -203,3 +273,5 @@ When replicating this setup:
 6. Memory limit: 14GB is specified as `14g` in Podman arguments
 7. The workspace directory must exist before creating the container
 8. Linger must be enabled for boot-time startup without user login
+9. Port forwarding: Host port 2222 → Container port 22 (SSH)
+10. SSH server starts automatically via `/start.sh` script in the container
