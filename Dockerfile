@@ -19,10 +19,6 @@ RUN pacman -Syu --noconfirm \
         python-pip \
         nodejs \
         npm \
-    && git clone https://aur.archlinux.org/yay.git /tmp/yay \
-    && cd /tmp/yay \
-    && makepkg -si --noconfirm \
-    && rm -rf /tmp/yay \
     && pacman -Scc --noconfirm
 
 # Create a root-equivalent development user named henrique.
