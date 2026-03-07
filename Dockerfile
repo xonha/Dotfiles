@@ -1,7 +1,7 @@
 FROM archlinux:latest
 
 # Keep package metadata fresh and install common development tools.
-RUN pacman -Syu --noconfirm \
+RUN pacman -Sy --noconfirm \
     && pacman -S --noconfirm --needed \
         base-devel \
         git \
