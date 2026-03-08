@@ -26,6 +26,7 @@ RUN pacman -Sy --noconfirm \
         zsh-autosuggestions \
         zsh-history-substring-search \
         nvm \
+        kitty-terminfo \
     && pacman -Scc --noconfirm
 
 # Configure SSH server
