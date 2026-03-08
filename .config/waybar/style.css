@@ -15,13 +15,6 @@ window#waybar.hidden {
   opacity: 0.5;
 }
 
-#keyboard-state {
-  color: @Base;
-}
-#keyboard-state label.locked {
-  color: @Green;
-}
-
 #workspaces button {
   color: @Overlay0;
 }
@@ -68,23 +61,23 @@ window#waybar.hidden {
   -gtk-icon-effect: highlight;
 }
 
+#idle_inhibitor {
+  color: @Green;
+}
 #backlight {
   color: @Sky;
 }
-
 #pulseaudio.input {
-  color: @Lavender;
+  color: @Red;
 }
 #pulseaudio.output {
-  color: @Blue;
+  color: @Sapphire;
 }
-#pulseaudio.input.muted,
-#pulseaudio.output.source-muted {
-  color: @Surface1;
+#bluetooth {
+  color: @Lavender;
 }
-
 #network {
-  color: @Teal;
+  color: @Blue;
 }
 #network.disconnected,
 #network.disabled {
@@ -134,7 +127,8 @@ window#waybar.hidden {
 #custom-menu,
 #custom-mako,
 #custom-power,
-#keyboard-state {
+#bluetooth,
+#idle_inhibitor {
   padding: 0px 8px;
 }
 

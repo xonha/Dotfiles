@@ -19,21 +19,23 @@
   "fixed-center": true,
   "ipc": true,
   "modules-right": [
-    "keyboard-state",
-    "battery",
-    // "network",
-    "backlight",
-    "pulseaudio#output",
     "pulseaudio#input",
+    "battery",
+    "pulseaudio#output",
+    "backlight",
+    "network",
+    "bluetooth",
+    // "idle_inhibitor",
     "clock",
     "custom/mako",
   ],
   "modules-center": [
-    "hyprland/workspaces",
-    "tray"
+    "wlr/taskbar"
+    // "hyprland/workspaces",
+    // "tray"
   ],
   "modules-left": [
-    "custom/power",
+    // "custom/power",
     "temperature",
     "cpu",
     "memory",

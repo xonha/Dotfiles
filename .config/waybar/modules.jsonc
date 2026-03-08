@@ -45,19 +45,6 @@
       "inactive": "",
     },
   },
-  "keyboard-state": {
-    "numlock": false,
-    "capslock": true,
-    "device-path": "/dev/input/event3",
-    "format": {
-      "numlock": "{icon} Num",
-      "capslock": "{icon} Caps",
-    },
-    "format-icons": {
-      "locked": "",
-      "unlocked": "",
-    },
-  },
   // waybar-backlight
   "backlight": {
     "interval": 2,
@@ -183,7 +170,7 @@
     "tooltip-format": " {essid} via {gwaddr}",
     "on-click": "nm-connection-editor",
   },
-  "pulseaudio#input": {
+  "pulseaudio#output": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": " {volume}",
     "format-muted": "  Mute",
@@ -224,11 +211,11 @@
     "on-click-right": "pavucontrol --tab=3",
     "on-click-middle": "~/.config/scripts/switchaudio.sh",
   },
-  "pulseaudio#output": {
+  "pulseaudio#input": {
     "format": "{format_source}",
     "format-muted": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": " ",
+    "format-source-muted": "",
     // Commands to execute on events
     "on-scroll-up": "~/.config/scripts/volume.sh --inc-mic",
     "on-scroll-down": "~/.config/scripts/volume.sh --dec-mic",
@@ -236,46 +223,39 @@
     "on-click-right": "pavucontrol --tab=4",
   },
   // waybar-idle-inhibitor
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-    "timeout": 30,
-  },
+  // "idle_inhibitor": {
+  //   "format": "{icon}",
+  //   "format-icons": {
+  //     "activated": "󰈈  On",
+  //     "deactivated": "  Off",
+  //   },
+  //   "timeout": 30,
+  // },
   // waybar-tray
   "tray": {
     "icon-size": 14,
     "spacing": 6,
     "reverse-direction": true,
   },
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format-on": " On",
+    "format-off": " Off",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%"
+    // "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    // "tooltip-format-enumerate-connected": "{device_alias}\t\t{device_address}"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    // "icon-size": 14,
+    // "icon-theme": "Papirus-Dark",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+  }
 }
-// waybar-pulseaudio
-// "pulseaudio": {
-//   "format": "{icon} {volume}% {format_source}",
-//   "format-bluetooth": " {volume}% {format_source}",
-//   "format-muted": " Mute {format_source}",
-//   "format-bluetooth-muted": " Mute {format_source}",
-//   "format-source": "󰍬 {volume}%",
-//   "format-source-muted": "󰍭 Mute",
-//   "format-icons": {
-//     "headphone": "",
-//     "hands-free": "",
-//     "headset": "",
-//     "phone": "",
-//     "portable": "",
-//     "car": "",
-//     "default": [
-//       "",
-//       "",
-//       ""
-//     ]
-//   },
-//   "scroll-step": 5.0,
-//   // Commands to execute on events
-//   "on-click": "pulsemixer --toggle-mute",
-//   "on-click-right": "~/.config/scripts/volume.sh --toggle-mic",
-//   "on-click-middle": "pavucontrol",
-//   "smooth-scrolling-threshold": 1.0
-// },
