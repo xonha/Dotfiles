@@ -4,6 +4,8 @@
 
 This repository includes a `Dockerfile` for creating an Arch Linux development container (`devbox`) on Bazzite with automatic startup.
 
+Persistence note: with the systemd unit generated without `--new`, container writable-layer data persists across reboot/restart as long as the same container is reused. If you remove and recreate the container, writable-layer data is lost; keep important data in bind mounts/volumes such as `/workspace`.
+
 ### Prerequisites
 
 - Bazzite machine with Podman installed
@@ -85,8 +87,7 @@ RUN echo '#!/bin/bash' > /start.sh \
     && echo 'exec sleep infinity' >> /start.sh \
     && chmod +x /start.sh
 
-USER ${USERNAME}
-WORKDIR /home/${USERNAME}
+WORKDIR /workspace
 
 # Start the SSH server and keep the container running
 CMD ["/start.sh"]
@@ -112,7 +113,7 @@ podman create \
     -p 2222:22 \
     -v "$HOME/devbox/workspace:/workspace:Z" \
     -w /workspace \
-    localhost/devbox:latest
+    devbox:latest
 ```
 
 **Note:** Port 2222 on the host is forwarded to port 22 (SSH) in the container.
@@ -120,8 +121,8 @@ podman create \
 #### 3. Enable Auto-Start with Systemd
 
 ```bash
-# Generate systemd service file
-podman generate systemd --new --name devbox --files
+# Generate systemd service file for the existing container (persistent)
+podman generate systemd --name devbox --files
 
 # Move service file to user systemd directory
 mkdir -p "$HOME/.config/systemd/user"
@@ -134,6 +135,8 @@ systemctl --user enable --now devbox.service
 # Enable linger so the service starts at boot (even before login)
 loginctl enable-linger $USER
 ```
+
+Note: `podman generate systemd` is currently supported but marked deprecated upstream in favor of Quadlet (`*.container` units). This guide keeps the current command for simplicity.
 
 #### 4. Verify Setup
 
@@ -154,6 +157,7 @@ podman exec -it devbox whoami
 ### Accessing the Container
 
 **Via Podman exec (from Bazzite host):**
+
 ```bash
 podman exec -it devbox bash
 ```
@@ -161,6 +165,7 @@ podman exec -it devbox bash
 **Via SSH (from any machine on Tailscale):**
 
 Add this to your `~/.ssh/config` on your local machine:
+
 ```
 Host devbox
     HostName <bazzite-tailscale-ip>
@@ -169,12 +174,14 @@ Host devbox
 ```
 
 Then connect with:
+
 ```bash
 ssh henrique@devbox
 # Password: plambas
 ```
 
 To find your Bazzite Tailscale IP:
+
 ```bash
 # On the Bazzite machine
 tailscale ip -4
@@ -210,23 +217,62 @@ If you modify the `Dockerfile`:
 # Rebuild the image
 podman build --no-cache -t devbox:latest "$HOME/devbox-image"
 
-# Restart the service (it will use the new image due to --new flag)
-systemctl --user restart devbox.service
+# Stop service before replacing container
+systemctl --user stop devbox.service
+
+# Recreate the container from the rebuilt image
+podman rm -f devbox
+podman create \
+    --name devbox \
+    --hostname devbox \
+    --memory 14g \
+    --memory-swap 14g \
+    --pids-limit 4096 \
+    -p 2222:22 \
+    -v "$HOME/devbox/workspace:/workspace:Z" \
+    -w /workspace \
+    devbox:latest
+
+# Start service again
+systemctl --user start devbox.service
 ```
+
+### Fix Existing Install (If Data Is Being Lost)
+
+If you already generated your unit with `--new`, replace it with a persistent unit:
+
+```bash
+# Stop and disable current unit
+systemctl --user disable --now devbox.service
+
+# Re-generate service without --new
+podman generate systemd --name devbox --files
+mkdir -p "$HOME/.config/systemd/user"
+mv -f container-devbox.service "$HOME/.config/systemd/user/devbox.service"
+
+# Reload and re-enable
+systemctl --user daemon-reload
+systemctl --user enable --now devbox.service
+```
+
+After this, container writable-layer changes persist across reboots.
 
 ### Troubleshooting
 
 **Container won't start:**
+
 - Check logs: `journalctl --user -u devbox.service -n 50`
 - Verify image exists: `podman images | grep devbox`
 - Check if old container is running: `podman ps -a | grep devbox`
 
 **Service doesn't start at boot:**
+
 - Verify linger is enabled: `loginctl show-user $USER -p Linger`
 - Should show `Linger=yes`
 - Enable if needed: `loginctl enable-linger $USER`
 
 **Memory limits not applied:**
+
 - Verify with: `podman inspect devbox | grep -i memory`
 - Note: CPU pinning (`--cpuset-cpus`) requires rootful Podman
 
@@ -237,12 +283,14 @@ The container runs an SSH server on port 22, which is forwarded to port 2222 on 
 **Configure your local machine:**
 
 1. Get the Bazzite Tailscale IP:
+
    ```bash
    # On Bazzite
    tailscale ip -4
    ```
 
 2. Add SSH config entry on your local machine (`~/.ssh/config`):
+
    ```
    Host devbox
        HostName <bazzite-tailscale-ip>
@@ -257,6 +305,7 @@ The container runs an SSH server on port 22, which is forwarded to port 2222 on 
    ```
 
 **Optional: Set up SSH key authentication:**
+
 ```bash
 # From your local machine
 ssh-copy-id -p 2222 henrique@<bazzite-tailscale-ip>
@@ -265,6 +314,7 @@ ssh-copy-id -p 2222 henrique@<bazzite-tailscale-ip>
 ### Notes for AI Agents
 
 When replicating this setup:
+
 1. Use the exact `Dockerfile` content from this repository
 2. Execute commands in the order listed
 3. Verify each step completes successfully before proceeding
