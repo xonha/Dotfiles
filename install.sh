@@ -8,6 +8,7 @@ PKG_INSTALL=(
   grim
   hyprland
   impala
+  iwd
   kitty
   kooha
   light

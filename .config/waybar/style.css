@@ -35,7 +35,7 @@
 
 window#waybar {
   background-color: @Base;
-  transition-duration: 0.5s;
+  transition-duration: 0.75s;
   transition-property: background-color;
 }
 
@@ -61,7 +61,7 @@ window#waybar.hidden {
 
 #battery.critical {
   animation-direction: alternate;
-  animation-duration: 0.5s;
+  animation-duration: 0.75s;
   animation-iteration-count: infinite;
   animation-name: blink;
   animation-timing-function: linear;
@@ -127,7 +127,7 @@ window#waybar.hidden {
 
 #pulseaudio.input {
   animation-direction: alternate;
-  animation-duration: 0.5s;
+  animation-duration: 0.75s;
   animation-iteration-count: infinite;
   animation-name: blink;
   animation-timing-function: linear;
