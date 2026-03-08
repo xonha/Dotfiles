@@ -19,8 +19,8 @@
   "fixed-center": true,
   "ipc": true,
   "modules-right": [
-    "pulseaudio#input",
     "battery",
+    "pulseaudio#input",
     "pulseaudio#output",
     "backlight",
     "network",
