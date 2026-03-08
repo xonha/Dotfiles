@@ -2,14 +2,14 @@
 
 PKG_INSTALL=(
   brightnessctl
+  bluetui
   debugedit
   earlyoom
-  gimp
   grim
   hyprland
+  impala
   kitty
   kooha
-  stow
   light
   libreoffice-still
   mpv
@@ -19,7 +19,6 @@ PKG_INSTALL=(
   nemo-preview
   nemo-python
   neovim
-  network-manager-applet
   npm
   nvm
   nwg-displays
@@ -35,9 +34,11 @@ PKG_INSTALL=(
   hyprlock
   hyprtoolkit
   hyprlauncher
+  hyprpolkitagent
   hyprshutdown
   hypridle
   ttf-jetbrains-mono-nerd
+  stow
   swappy
   docker
   wget
@@ -50,7 +51,6 @@ PKG_INSTALL=(
   hyprsunset
   kdeconnect
   keyd
-  xfce-polkit
   wl-clipboard
   zsh-completions
   zsh-autosuggestions
@@ -64,6 +64,8 @@ PKG_AUR_INSTALL=(
   aur/zsh-auto-venv-git
   aur/visual-studio-code-bin
   aur/wlrctl
+  aur/pinta
+  aur/valent
 )
 
 PKG_UNINSTALL=(
