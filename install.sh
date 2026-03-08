@@ -99,10 +99,11 @@ PKG_UNINSTALL=(
   arandr
   xarchiver
   nitrogen
+  nm-connection-editor
+  networkmanager-dmenu-git
   galculator
   atril
   firefox
-  networkmanager-dmenu-git
   thunar-volman
   thunar-media-tags-plugin
   thunar-archive-plugin

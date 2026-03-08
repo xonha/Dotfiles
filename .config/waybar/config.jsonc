@@ -35,7 +35,7 @@
     // "tray"
   ],
   "modules-left": [
-    // "custom/power",
+    "custom/power",
     "temperature",
     "cpu",
     "memory",
