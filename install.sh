@@ -8,7 +8,6 @@ PKG_INSTALL=(
   grim
   hyprland
   impala
-  iwd
   kitty
   kooha
   light
@@ -64,7 +63,7 @@ PKG_AUR_INSTALL=(
   aur/zsh-theme-powerlevel10k-bin-git
   aur/zsh-auto-venv-git
   aur/visual-studio-code-bin
-  aur/wlrctl
+  aur/wlctl-bin
   aur/pinta
   aur/valent
 )
