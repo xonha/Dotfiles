@@ -19,6 +19,13 @@ RUN pacman -Sy --noconfirm \
         python-pip \
         nodejs \
         npm \
+        stow \
+        github-cli \
+        zsh \
+        zsh-syntax-highlighting \
+        zsh-autosuggestions \
+        zsh-history-substring-search \
+        nvm \
     && pacman -Scc --noconfirm
 
 # Configure SSH server

@@ -48,22 +48,29 @@ FROM archlinux:latest
 # Keep package metadata fresh and install common development tools.
 RUN pacman -Sy --noconfirm \
     && pacman -S --noconfirm --needed \
-           base-devel \
-           git \
-           curl \
-           wget \
-           openssh \
-           sudo \
-           neovim \
-           less \
-           which \
-           unzip \
-           zip \
-           ca-certificates \
-           python \
-           python-pip \
-           nodejs \
-           npm \
+            base-devel \
+            git \
+            curl \
+            wget \
+            openssh \
+            sudo \
+            neovim \
+            less \
+            which \
+            unzip \
+            zip \
+            ca-certificates \
+            python \
+            python-pip \
+            nodejs \
+            npm \
+            stow \
+            github-cli \
+            zsh \
+            zsh-syntax-highlighting \
+            zsh-autosuggestions \
+            zsh-history-substring-search \
+            nvm \
     && pacman -Scc --noconfirm
 
 # Configure SSH server
