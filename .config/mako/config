@@ -1,6 +1,6 @@
 ## Mako configuration file
 # Notification monitor
-output=DP-5
+output=DP-3
 
 # GLOBAL CONFIGURATION OPTIONS
 max-history=100
