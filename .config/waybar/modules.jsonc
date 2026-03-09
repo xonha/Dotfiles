@@ -26,8 +26,8 @@
   "custom/power": {
     "format": "",
     "tooltip": false,
-    "on-click": "~/.config/wofi/powermenu.sh",
-    "on-click-right": "~/.config/wofi/menu.sh",
+    "on-click": "~/.config/scripts/powermenu.sh",
+    "on-click-right": "hyprlauncher"
   },
   "custom/mako": {
     "exec": "~/.config/scripts/notifications.sh",

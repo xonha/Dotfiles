@@ -85,7 +85,6 @@ PKG_UNINSTALL=(
   openbox
   plank
   rofi
-  wofi
   xcolor
   alacritty
   ranger
