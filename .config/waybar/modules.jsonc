@@ -254,8 +254,7 @@
   },
   "wlr/taskbar": {
     "format": "{icon}",
-    // "icon-size": 14,
-    // "icon-theme": "Papirus-Dark",
+    "icon-theme": "Papirus-Dark",
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
