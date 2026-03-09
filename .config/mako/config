@@ -1,15 +1,15 @@
 ## Mako configuration file
 # Notification monitor
-output=DP-4
+output=DP-5
 
 # GLOBAL CONFIGURATION OPTIONS
 max-history=100
 sort=-time
 
 # BINDING OPTIONS
-# on-button-left=dismiss
+on-button-left=dismiss
 on-button-middle=dismiss-all
-on-button-right=dismiss
+on-button-right=dismiss-all
 on-touch=dismiss
 
 # STYLE OPTIONS
@@ -31,7 +31,7 @@ default-timeout=0
 ignore-timeout=0
 max-visible=5
 layer=overlay
-anchor=top-left
+anchor=top-right
 
 background-color=#151515
 text-color=#ffffff
