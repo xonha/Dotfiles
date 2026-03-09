@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=YouTube Music
+GenericName=youtube music
+Exec=/opt/brave-bin/brave --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
+Icon=youtube-music
+StartupWMClass=crx_cinhimbnkkaeohfgghhklpknlkffjgod
