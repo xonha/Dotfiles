@@ -81,7 +81,7 @@ window#waybar.hidden {
 }
 
 #bluetooth {
-  color: @Lavender;
+  color: @Blue;
 }
 
 #clock {
@@ -117,7 +117,7 @@ window#waybar.hidden {
 }
 
 #network {
-  color: @Blue;
+  color: @Lavender;
 }
 
 #network.disabled,

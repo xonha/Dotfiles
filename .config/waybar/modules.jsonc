@@ -1,28 +1,5 @@
 // Waybar modules configuration
 {
-  // waybar-workspaces
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "format-icons": {
-      "1": " ",
-      "7": "󰾰 ",
-      "8": "󰨞 ",
-      "9": " ",
-      "10": " ",
-      "11": "󰊻 ",
-      // "12": "󱅃 ",
-      "12": " ",
-      "14": " ",
-      "15": " ",
-      "16": " ",
-      "urgent": " ",
-      // "active": " ",
-      // "default": " ",
-      // "default": " ",
-    },
-    "sort-by-number": true,
-  },
   "custom/power": {
     "format": "",
     "tooltip": false,
@@ -45,7 +22,6 @@
       "inactive": "",
     },
   },
-  // waybar-backlight
   "backlight": {
     "interval": 2,
     "align": 0,
@@ -160,12 +136,14 @@
   "pulseaudio#output": {
     "format": "{icon} {volume}%",
     "format-muted": "{icon} Muted",
-    "format-bluetooth": "󰂯 {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
     "format-bluetooth-muted": "󰂲 Muted",
     "scroll-step": 5.0,
     "format-icons": {
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": "󰋋",
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo-muted": "󰟎",
+      "bluez_output.C4_30_18_9C_96_75.1": "",
+      "bluetooth": "",
       "headphone": "󰋋",
       "hands-free": "",
       "headset": "",
@@ -195,21 +173,19 @@
         " ",
       ],
     },
-    // Commands to execute on events
     "on-click": "pulsemixer --toggle-mute",
     "on-click-right": "pavucontrol --tab=3",
-    "on-click-middle": "~/.config/scripts/switchaudio.sh",
+    "on-click-middle": "~/.config/scripts/switchaudio.sh"
   },
   "pulseaudio#input": {
     "format": "{format_source}",
     "format-muted": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
-    // Commands to execute on events
     "on-scroll-up": "~/.config/scripts/volume.sh --inc-mic",
     "on-scroll-down": "~/.config/scripts/volume.sh --dec-mic",
     "on-click": "~/.config/scripts/volume.sh --toggle-mic",
-    "on-click-right": "pavucontrol --tab=4",
+    "on-click-right": "pavucontrol --tab=4"
   },
   "tray": {
     "icon-size": 14,
