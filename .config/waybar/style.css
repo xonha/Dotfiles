@@ -142,6 +142,15 @@ window#waybar.hidden {
   color: @Red;
 }
 
+#temperature.critical {
+  animation-direction: alternate;
+  animation-duration: 0.75s;
+  animation-iteration-count: infinite;
+  animation-name: blink;
+  animation-timing-function: linear;
+  color: @Red;
+}
+
 #tray {
   color: @Surface0;
 }
