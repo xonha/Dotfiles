@@ -80,7 +80,7 @@
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-full": "{icon} Full",
+    "format-full": "",
     "format-good": "",
     "format-alt": "{icon} {time}",
     "format-icons": [
@@ -178,6 +178,7 @@
     "scroll-step": 5.0,
     "format-icons": {
       "headphone": "",
+      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": "",
       "hands-free": "",
       "headset": "",
       "phone": "",
@@ -222,23 +223,12 @@
     "on-click": "~/.config/scripts/volume.sh --toggle-mic",
     "on-click-right": "pavucontrol --tab=4",
   },
-  // waybar-idle-inhibitor
-  // "idle_inhibitor": {
-  //   "format": "{icon}",
-  //   "format-icons": {
-  //     "activated": "󰈈  On",
-  //     "deactivated": "  Off",
-  //   },
-  //   "timeout": 30,
-  // },
-  // waybar-tray
   "tray": {
     "icon-size": 14,
     "spacing": 6,
     "reverse-direction": true,
   },
   "bluetooth": {
-    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
     "format-on": " On",
     "format-off": " Off",
     "format-disabled": " Off",
@@ -249,8 +239,6 @@
     "tooltip-format-enumerate-connected": "{device_alias}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
     "on-click": "rfkill toggle bluetooth"
-    // "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    // "tooltip-format-enumerate-connected": "{device_alias}\t\t{device_address}"
   },
   "wlr/taskbar": {
     "format": "{icon}",
