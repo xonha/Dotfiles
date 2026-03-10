@@ -135,12 +135,12 @@
   },
   "pulseaudio#output": {
     "format": "{icon} {volume}%",
-    "format-muted": "{icon} Muted",
+    "format-muted": "  Mute",
     "format-bluetooth": "{icon} {volume}%",
-    "format-bluetooth-muted": "󰂲 Muted",
+    "format-bluetooth-muted": "󰂲 Mute",
     "scroll-step": 5.0,
     "format-icons": {
-      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": "󰋋",
+      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": " ",
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo-muted": "󰟎",
       "bluez_output.C4_30_18_9C_96_75.1": "",
       "bluetooth": "",
