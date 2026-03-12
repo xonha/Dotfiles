@@ -27,7 +27,7 @@
     "network",
     // "idle_inhibitor",
     "clock",
-    "custom/mako",
+    "custom/mako"
   ],
   "modules-center": [
     "wlr/taskbar"
@@ -40,5 +40,5 @@
     "cpu",
     "memory",
     "disk"
-  ],
+  ]
 }
