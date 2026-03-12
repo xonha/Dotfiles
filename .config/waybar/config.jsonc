@@ -20,9 +20,9 @@
   "ipc": true,
   "modules-right": [
     "battery",
+    "backlight",
     "pulseaudio#input",
     "pulseaudio#output",
-    "backlight",
     "bluetooth",
     "network",
     // "idle_inhibitor",

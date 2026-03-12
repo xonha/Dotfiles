@@ -52,7 +52,7 @@ window#waybar.hidden {
 }
 
 #backlight {
-  color: @Sky;
+  color: @Teal;
 }
 
 #battery {

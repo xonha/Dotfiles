@@ -40,7 +40,8 @@
     "smooth-scrolling-threshold": 1
   },
   "battery": {
-    "interval": 60,
+    "bat": "BAT0",
+    "interval": 5,
     "full-at": 100,
     "states": {
       "good": 70,
@@ -49,11 +50,9 @@
       "critical": 10
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-full": "",
-    "format-good": "",
     "format-alt": "{time} {icon}",
+    "format-full": "",
+    "format-charging": "{capacity}% ",
     "format-icons": [
       "󰂎",
       "󰁺",
