@@ -1,7 +1,7 @@
 // Waybar modules configuration
 {
   "custom/power": {
-    "format": "",
+    "format": "",
     "tooltip": false,
     "on-click": "~/.config/scripts/powermenu.sh",
     "on-click-right": "hyprlauncher"
@@ -51,7 +51,6 @@
     },
     "format": "{capacity}% {icon}",
     "format-alt": "{time} {icon}",
-    "format-full": "",
     "format-charging": "{capacity}% ",
     "format-icons": [
       "󰂎",
@@ -103,11 +102,6 @@
   "cpu": {
     "interval": 3,
     "format": "  {avg_frequency:0.2f}GHz/{usage}%"
-  },
-  "custom/menu": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "~/.config/wofi/menu.sh"
   },
   "disk": {
     "interval": 30,
