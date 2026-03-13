@@ -20,7 +20,7 @@ find_caps_file() {
 emit_json() {
   local state="$1"
   if [[ "$state" == "on" ]]; then
-    printf '{"text":"󰪛","alt":"on","tooltip":"Caps Lock is ON","class":["caps","on"]}\n'
+    printf '{"text":"Caps 󰌾","alt":"on","tooltip":"Caps Lock is ON","class":["caps","on"]}\n'
   else
     printf '{"text":"","alt":"off","tooltip":"Caps Lock is OFF","class":["caps","off"]}\n'
   fi

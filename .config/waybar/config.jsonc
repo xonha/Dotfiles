@@ -27,8 +27,8 @@
     "bluetooth",
     "network",
     // "idle_inhibitor",
-    "clock",
-    "custom/mako"
+    "clock"
+    // "custom/mako"
   ],
   "modules-center": [
     "wlr/taskbar",
@@ -36,7 +36,7 @@
     "tray"
   ],
   "modules-left": [
-    "custom/power",
+    // "custom/power",
     "temperature",
     "cpu",
     "memory",

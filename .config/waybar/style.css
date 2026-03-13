@@ -164,7 +164,7 @@ window#waybar.hidden {
 }
 
 #custom-capslock.on {
-  color: @Red;
+  color: @Teal;
 }
 
 #backlight,
