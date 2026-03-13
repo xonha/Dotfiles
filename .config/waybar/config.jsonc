@@ -20,6 +20,7 @@
   "ipc": true,
   "modules-right": [
     "battery",
+    "custom/capslock",
     "backlight",
     "pulseaudio#input",
     "pulseaudio#output",
@@ -30,9 +31,9 @@
     "custom/mako"
   ],
   "modules-center": [
-    "wlr/taskbar"
+    "wlr/taskbar",
     // "hyprland/workspaces",
-    // "tray"
+    "tray"
   ],
   "modules-left": [
     "custom/power",

@@ -163,11 +163,16 @@ window#waybar.hidden {
   -gtk-icon-effect: dim;
 }
 
+#custom-capslock.on {
+  color: @Red;
+}
+
 #backlight,
 #battery,
 #bluetooth,
 #clock,
 #cpu,
+#custom-capslock,
 #custom-mako,
 #custom-menu,
 #custom-power,

@@ -206,5 +206,11 @@
       "brave-cinhimbnkkaeohfgghhklpknlkffjgod-Default": "zcyoutube-music"
     },
     "sort-by-app-id": true
+  },
+  "custom/capslock": {
+    "return-type": "json",
+    "exec": "~/.config/scripts/capslock.sh",
+    "restart-interval": 5,
+    "hide-empty-text": true
   }
 }
