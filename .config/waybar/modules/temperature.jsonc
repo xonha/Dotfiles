@@ -1,0 +1,7 @@
+{
+  "temperature": {
+    "critical-threshold": 85,
+    "format": "  {temperatureC}°C",
+    "tooltip-format": "CPU Temperature: {temperatureC}/100°C",
+  }
+}

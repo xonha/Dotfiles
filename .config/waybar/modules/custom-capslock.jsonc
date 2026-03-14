@@ -1,0 +1,8 @@
+{
+  "custom/capslock": {
+    "return-type": "json",
+    "exec": "~/.config/scripts/capslock.sh",
+    "restart-interval": 5,
+    "hide-empty-text": true,
+  }
+}

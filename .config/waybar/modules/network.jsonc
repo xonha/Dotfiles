@@ -1,0 +1,12 @@
+{
+  "network": {
+    "interval": 5,
+    "max-length": 20,
+    "format-wifi": "{essid} 󰤥",
+    "format-ethernet": "Wired 󰈀",
+    "format-linked": "{ifname} (No IP) 󰈀",
+    "format-disconnected": "Disconnected 󰤭",
+    "format-disabled": "Disabled 󰤮",
+    "tooltip-format": "{essid} via {gwaddr}",
+  }
+}

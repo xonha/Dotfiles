@@ -1,0 +1,6 @@
+{
+  "cpu": {
+    "interval": 3,
+    "format": "  {avg_frequency:0.2f}GHz/{usage}%",
+  }
+}
