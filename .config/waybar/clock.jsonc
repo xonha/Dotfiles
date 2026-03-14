@@ -25,5 +25,5 @@
     "on-scroll-down": "pulsemixer --max-volume 100 --change-volume -5",
     "on-click": "xdg-open https://calendar.google.com/calendar",
     "on-click-right": "pavucontrol --tab=3",
-  }
+  },
 }

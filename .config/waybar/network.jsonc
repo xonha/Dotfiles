@@ -8,5 +8,5 @@
     "format-disconnected": "Disconnected 󰤭",
     "format-disabled": "Disabled 󰤮",
     "tooltip-format": "{essid} via {gwaddr}",
-  }
+  },
 }

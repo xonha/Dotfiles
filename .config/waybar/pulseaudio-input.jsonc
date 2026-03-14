@@ -8,5 +8,5 @@
     "on-scroll-down": "~/.config/scripts/volume.sh --dec-mic",
     "on-click": "~/.config/scripts/volume.sh --toggle-mic",
     "on-click-right": "pavucontrol --tab=4",
-  }
+  },
 }

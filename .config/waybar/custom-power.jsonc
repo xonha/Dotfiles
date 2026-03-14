@@ -4,5 +4,5 @@
     "tooltip": false,
     "on-click": "~/.config/scripts/powermenu.sh",
     "on-click-right": "hyprlauncher",
-  }
+  },
 }

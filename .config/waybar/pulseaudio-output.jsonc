@@ -17,5 +17,5 @@
     },
     "on-click": "pulsemixer --toggle-mute",
     "on-click-right": "~/.config/scripts/switchaudio.sh",
-  }
+  },
 }
