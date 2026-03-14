@@ -20,27 +20,27 @@
   "ipc": true,
   "modules-right": [
     "battery",
-    "custom/keyd",
     "custom/capslock",
+    "custom/keyd",
     "backlight",
     "pulseaudio#input",
     "pulseaudio#output",
     "bluetooth",
     "network",
     // "idle_inhibitor",
-    "clock"
     // "custom/mako"
+    "clock",
   ],
   "modules-center": [
     "wlr/taskbar",
     // "hyprland/workspaces",
-    "tray"
+    "tray",
   ],
   "modules-left": [
     // "custom/power",
     "temperature",
     "cpu",
     "memory",
-    "disk"
-  ]
+    "disk",
+  ],
 }

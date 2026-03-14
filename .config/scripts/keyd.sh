@@ -12,24 +12,24 @@ is_active() {
 
 emit_json() {
   if is_active; then
-    printf '{"text":"keyd","alt":"active","class":"active","tooltip":"keyd: running"}\n'
+    printf '{"text":"Keyd 󰌆","alt":"active","class":"active","tooltip":"Keyd: running"}\n'
   else
-    printf '{"text":"","alt":"inactive","class":"inactive","tooltip":"keyd: stopped"}\n'
+    printf '{"text":"","alt":"inactive","class":"inactive","tooltip":"Keyd: stopped"}\n'
   fi
 }
 
 toggle() {
   if is_active; then
-    systemctl stop keyd.service && ${notify_cmd} "keyd stopped"
+    systemctl stop keyd.service && ${notify_cmd} "Keyd stopped"
   else
-    systemctl start keyd.service && ${notify_cmd} "keyd started"
+    systemctl start keyd.service && ${notify_cmd} "Keyd started"
   fi
 }
 
 case "${1:-}" in
-  --toggle) toggle ;;
-  --start)  systemctl start keyd.service && ${notify_cmd} "keyd started" ;;
-  --stop)   systemctl stop  keyd.service && ${notify_cmd} "keyd stopped" ;;
-  --status) emit_json ;;
-  *)        emit_json ;;
+--start) systemctl start keyd.service && ${notify_cmd} "Keyd started" ;;
+--stop) systemctl stop keyd.service && ${notify_cmd} "Keyd stopped" ;;
+--status) emit_json ;;
+--toggle) toggle ;;
+*) emit_json ;;
 esac
