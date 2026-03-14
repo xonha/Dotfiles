@@ -163,7 +163,8 @@ window#waybar.hidden {
   -gtk-icon-effect: dim;
 }
 
-#custom-capslock.on {
+#custom-capslock.on,
+#custom-keyd.active {
   color: @Teal;
 }
 
@@ -173,6 +174,7 @@ window#waybar.hidden {
 #clock,
 #cpu,
 #custom-capslock,
+#custom-keyd,
 #custom-mako,
 #custom-menu,
 #custom-power,
