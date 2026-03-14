@@ -163,9 +163,12 @@ window#waybar.hidden {
   -gtk-icon-effect: dim;
 }
 
-#custom-capslock.on,
-#custom-keyd.active {
+#custom-capslock.on {
   color: @Teal;
+}
+
+#custom-keyd.active {
+  color: @Rosewater;
 }
 
 #backlight,

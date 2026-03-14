@@ -12,7 +12,7 @@ is_active() {
 
 emit_json() {
   if is_active; then
-    printf '{"text":"Keyd 󰌆","alt":"active","class":"active","tooltip":"Keyd: running"}\n'
+    printf '{"text":"󰌏 Keyd","alt":"active","class":"active","tooltip":"Keyd: running"}\n'
   else
     printf '{"text":"","alt":"inactive","class":"inactive","tooltip":"Keyd: stopped"}\n'
   fi

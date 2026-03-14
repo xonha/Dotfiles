@@ -39,7 +39,6 @@
   "modules-right": [
     "battery",
     "custom/capslock",
-    "custom/keyd",
     "backlight",
     "pulseaudio#input",
     "pulseaudio#output",
@@ -48,5 +47,5 @@
     "clock",
   ],
   "modules-center": ["wlr/taskbar", "tray"],
-  "modules-left": ["temperature", "cpu", "memory", "disk"],
+  "modules-left": ["temperature", "cpu", "memory", "disk", "custom/keyd"],
 }
