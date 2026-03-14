@@ -4,7 +4,7 @@
     "format": "",
     "tooltip": false,
     "on-click": "~/.config/scripts/powermenu.sh",
-    "on-click-right": "hyprlauncher"
+    "on-click-right": "hyprlauncher",
   },
   "custom/mako": {
     "exec": "~/.config/scripts/notifications.sh",
@@ -13,59 +13,46 @@
     "format": "{icon}",
     "format-icons": {
       "active": "󰂛",
-      "inactive": ""
+      "inactive": "",
     },
     "return-type": "json",
     "tooltip": true,
     "tooltip-format": {
       "active": "",
-      "inactive": ""
-    }
+      "inactive": "",
+    },
   },
   "backlight": {
     "interval": 2,
     "align": 0,
     "rotate": 0,
     "format": "{percent}% {icon}",
-    "format-icons": [
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
     "on-click": "",
     "on-click-right": "",
     "on-update": "",
     "on-scroll-up": "light -A 5%",
     "on-scroll-down": "light -U 5%",
-    "smooth-scrolling-threshold": 1
+    "smooth-scrolling-threshold": 1,
   },
   "battery": {
     "bat": "BAT0",
     "interval": 5,
     "full-at": 100,
     "states": {
+      "cem": 100,
       "good": 70,
       "warning": 40,
       "low": 25,
-      "critical": 10
+      "critical": 10,
     },
+    "format-cem": "",
     "format": "{capacity}% {icon}",
     "format-alt": "{time} {icon}",
     "format-charging": "{capacity}% ",
-    "format-icons": [
-      "󰂎",
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂"
-    ],
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
     "format-time": "{H}h {M}min",
-    "tooltip": true
+    "tooltip": true,
   },
   "clock": {
     "interval": 60,
@@ -86,33 +73,33 @@
         "weekdays": "<span color='#b4befe'><b>{}</b></span>",
         "weeks": "<span color='#89b4fa'><b>W{}</b></span>",
         "today": "<span background='#74c7ec' color='#11111b'><b><u>{}</u></b></span>",
-        "days": "<span color='#ffffff'><b>{}</b></span>"
-      }
+        "days": "<span color='#ffffff'><b>{}</b></span>",
+      },
     },
     "on-scroll-up": "pulsemixer --max-volume 100 --change-volume +5",
     "on-scroll-down": "pulsemixer --max-volume 100 --change-volume -5",
     "on-click": "xdg-open https://calendar.google.com/calendar",
-    "on-click-right": "pavucontrol --tab=3"
+    "on-click-right": "pavucontrol --tab=3",
   },
   "temperature": {
     "critical-threshold": 85,
     "format": "  {temperatureC}°C",
-    "tooltip-format": "CPU Temperature: {temperatureC}/100°C"
+    "tooltip-format": "CPU Temperature: {temperatureC}/100°C",
   },
   "cpu": {
     "interval": 3,
-    "format": "  {avg_frequency:0.2f}GHz/{usage}%"
+    "format": "  {avg_frequency:0.2f}GHz/{usage}%",
   },
   "disk": {
     "interval": 30,
     "format": "󰋊 {specific_free:0.2f}/{specific_total:0.2f}GB",
     "tooltip-format": "ROM: Using {specific_free:0.2f}GB out of {specific_total:0.2f}GB ({percentage_used}%)",
-    "unit": "GB"
+    "unit": "GB",
   },
   "memory": {
     "interval": 10,
     "format": "  {used:0.1f}/{total:0.1f}GB",
-    "tooltip-format": "RAM: Using {used:0.1f}GB out of {total:0.1f}GB ({percentage}%)"
+    "tooltip-format": "RAM: Using {used:0.1f}GB out of {total:0.1f}GB ({percentage}%)",
   },
   "network": {
     "interval": 5,
@@ -122,7 +109,7 @@
     "format-linked": "{ifname} (No IP) 󰈀",
     "format-disconnected": "Disconnected 󰤭",
     "format-disabled": "Disabled 󰤮",
-    "tooltip-format": "{essid} via {gwaddr}"
+    "tooltip-format": "{essid} via {gwaddr}",
   },
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
@@ -138,14 +125,10 @@
       "headphone": "󰋋",
       "phone": "",
       "default-muted": "󰝟",
-      "default": [
-        "󰕿",
-        "󰖀",
-        "󰕾"
-      ]
+      "default": ["󰕿", "󰖀", "󰕾"],
     },
     "on-click": "pulsemixer --toggle-mute",
-    "on-click-right": "~/.config/scripts/switchaudio.sh"
+    "on-click-right": "~/.config/scripts/switchaudio.sh",
   },
   "pulseaudio#input": {
     "format": "{format_source}",
@@ -155,12 +138,12 @@
     "on-scroll-up": "~/.config/scripts/volume.sh --inc-mic",
     "on-scroll-down": "~/.config/scripts/volume.sh --dec-mic",
     "on-click": "~/.config/scripts/volume.sh --toggle-mic",
-    "on-click-right": "pavucontrol --tab=4"
+    "on-click-right": "pavucontrol --tab=4",
   },
   "tray": {
     "icon-size": 14,
     "spacing": 6,
-    "reverse-direction": true
+    "reverse-direction": true,
   },
   "bluetooth": {
     "format-on": "On ",
@@ -172,7 +155,7 @@
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
-    "on-click": "rfkill toggle bluetooth"
+    "on-click": "rfkill toggle bluetooth",
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -183,14 +166,15 @@
     "app_ids-mapping": {
       "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default": "zawhatsapp",
       "brave-dlgohinmglaoopaiplliaecdpmnepmga-Default": "zbtodoist",
-      "brave-cinhimbnkkaeohfgghhklpknlkffjgod-Default": "zcyoutube-music"
+      "brave-cinhimbnkkaeohfgghhklpknlkffjgod-Default": "zcyoutube-music",
     },
-    "sort-by-app-id": true
+    "sort-by-app-id": true,
   },
   "custom/capslock": {
     "return-type": "json",
     "exec": "~/.config/scripts/capslock.sh",
     "restart-interval": 5,
-    "hide-empty-text": true
-  }
+    "hide-empty-text": true,
+  },
 }
+

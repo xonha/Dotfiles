@@ -52,7 +52,7 @@ window#waybar.hidden {
 }
 
 #backlight {
-  color: @Teal;
+  color: @Sky;
 }
 
 #battery {
@@ -131,7 +131,7 @@ window#waybar.hidden {
   animation-iteration-count: infinite;
   animation-name: blink;
   animation-timing-function: linear;
-  color: @Sky;
+  color: @Sapphire;
 }
 
 #pulseaudio.output {
