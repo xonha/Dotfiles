@@ -32,6 +32,17 @@ v() {
   fi
 }
 
+o() {
+  if [ -d "$1" ]; then
+    cd "$1" || return
+    opencode "$1"
+  elif [ -f "$1" ]; then
+    opencode "$1"
+  else
+    opencode .
+  fi
+}
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000

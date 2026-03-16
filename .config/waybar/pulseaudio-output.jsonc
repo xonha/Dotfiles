@@ -1,9 +1,9 @@
 {
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
-    "format-muted": "Mute {icon}",
+    "format-muted": "Off {icon}",
     "format-bluetooth": "{volume}% {icon}",
-    "format-bluetooth-muted": "Mute 󰂲",
+    "format-bluetooth-muted": "Off 󰂲",
     "scroll-step": 5.0,
     "format-icons": {
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": "󰋋",
