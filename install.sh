@@ -38,6 +38,7 @@ PKG_INSTALL=(
   hyprshutdown
   hypridle
   ttf-jetbrains-mono-nerd
+  socat
   stow
   swappy
   docker
