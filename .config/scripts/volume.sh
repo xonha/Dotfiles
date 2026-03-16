@@ -48,33 +48,23 @@ toggle_mute() {
 }
 
 toggle_mic() {
-  # Find the default source
-  DEFAULT_SOURCE=$(pulsemixer --list-sources | grep 'Default')
-  DEFAULT_ID=$(echo "$DEFAULT_SOURCE" | cut -d',' -f1 | cut -d' ' -f3)
-  DEFAULT_MUTE_STATUS=$(echo "$DEFAULT_SOURCE" | grep -o 'Mute: [0-1]' | cut -d' ' -f2)
+  # Snapshot all source info in a single call
+  SOURCES=$(pulsemixer --list-sources)
 
-  # Toggle the default source
+  # Determine target state from the default source's current mute status
+  DEFAULT_MUTE_STATUS=$(echo "$SOURCES" | grep 'Default' | grep -o 'Mute: [0-1]' | cut -d' ' -f2)
   if [ "$DEFAULT_MUTE_STATUS" == "1" ]; then
-    pulsemixer --id "$DEFAULT_ID" --unmute
+    ACTION="--unmute"
   else
-    pulsemixer --id "$DEFAULT_ID" --mute
+    ACTION="--mute"
   fi
 
-  # Get all source IDs
-  IDS=$(pulsemixer --list-sources | grep 'Source:' | cut -d',' -f1 | cut -d' ' -f3)
-
-  # Split the string into an array
-  IFS=$'\n'
-  read -d '' -ra IDS_ARRAY <<<"$IDS"
-
-  # Iterate over each source ID
+  # Apply action to all sources in parallel
+  IFS=$'\n' read -d '' -ra IDS_ARRAY <<<"$(echo "$SOURCES" | grep 'Source:' | cut -d',' -f1 | cut -d' ' -f3)"
   for ID in "${IDS_ARRAY[@]}"; do
-    if [ "$DEFAULT_MUTE_STATUS" == "1" ]; then
-      pulsemixer --id "$ID" --unmute
-    else
-      pulsemixer --id "$ID" --mute
-    fi
+    pulsemixer --id "$ID" $ACTION &
   done
+  wait
 }
 
 mute_mic() {
