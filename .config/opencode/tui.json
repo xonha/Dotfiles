@@ -4,7 +4,7 @@
     "leader": "ctrl",
     "app_exit": "ctrl+q",
     "editor_open": "ctrl+e",
-    "theme_list": "ctrl+shift+t",
+    "theme_list": "ctrl+k",
     "sidebar_toggle": "ctrl+b",
     "scrollbar_toggle": "none",
     "username_toggle": "none",
