@@ -2,9 +2,8 @@
 #
 # monitor-auto-switch.sh
 #
-# Watches Hyprland monitor events, selects the right profile, applies each
-# monitor= directive live via `hyprctl keyword`, and writes the active lines
-# into monitors.conf so the layout persists across restarts.
+# Watches Hyprland monitor events and copies the right profile into
+# monitors.conf, then reloads Hyprland.
 #
 # Profiles (all live in $HYPR_CONFIG_DIR):
 #   monitors-docked.conf  – both external desk monitors connected
@@ -26,7 +25,7 @@ MONITOR_DESC_TRAVEL=""
 
 # ---------------------------------------------------------------------------
 
-select_profile() {
+apply_layout() {
     local connected
     connected=$(hyprctl monitors all -j 2>/dev/null)
 
@@ -36,45 +35,23 @@ select_profile() {
     echo "$connected" | grep -qF "$MONITOR_DESC_DESK_2" && has_desk_2=true
     [[ -n "$MONITOR_DESC_TRAVEL" ]] && echo "$connected" | grep -qF "$MONITOR_DESC_TRAVEL" && has_travel=true
 
-    if $has_desk_1 && $has_desk_2; then
-        echo "monitors-docked.conf"
-    elif $has_travel; then
-        echo "monitors-travel.conf"
-    else
-        echo "monitors-default.conf"
-    fi
-}
-
-apply_layout() {
     local profile
-    profile=$(select_profile)
+    if $has_desk_1 && $has_desk_2; then
+        profile="monitors-docked.conf"
+    elif $has_travel; then
+        profile="monitors-travel.conf"
+    else
+        profile="monitors-default.conf"
+    fi
+
     local source="$HYPR_CONFIG_DIR/$profile"
 
-    # Extract only the monitor= lines from the profile (skip comments/blanks).
-    local lines
-    mapfile -t lines < <(grep -E '^[[:space:]]*monitor[[:space:]]*=' "$source")
-
-    if [[ ${#lines[@]} -eq 0 ]]; then
-        return  # profile has no monitor directives yet (e.g. travel placeholder)
-    fi
-
-    # Skip if monitors.conf already contains exactly these lines.
-    local current_lines
-    mapfile -t current_lines < <(grep -E '^[[:space:]]*monitor[[:space:]]*=' "$MONITORS_CONF" 2>/dev/null)
-
-    if [[ "${lines[*]}" == "${current_lines[*]}" ]]; then
+    if diff -q "$source" "$MONITORS_CONF" >/dev/null 2>&1; then
         return  # already active, nothing to do
     fi
 
-    # Apply each directive live so the change takes effect immediately.
-    for line in "${lines[@]}"; do
-        # Strip leading whitespace and the "monitor=" prefix, leaving just the value.
-        local value="${line#*=}"
-        hyprctl keyword monitor "$value" >/dev/null 2>&1
-    done
-
-    # Persist the active directives into monitors.conf.
-    printf '%s\n' "${lines[@]}" > "$MONITORS_CONF"
+    cp "$source" "$MONITORS_CONF"
+    hyprctl reload >/dev/null 2>&1
 }
 
 # Run once at startup to handle current state before any events arrive.
