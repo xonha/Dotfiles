@@ -4,8 +4,6 @@
 
 set -Eeuo pipefail
 
-notify_cmd='notify-send -h string:x-canonical-private-synchronous:sys-notify-keyd -u low'
-
 is_active() {
   systemctl is-active --quiet keyd.service
 }
@@ -20,15 +18,15 @@ emit_json() {
 
 toggle() {
   if is_active; then
-    systemctl stop keyd.service && ${notify_cmd} "Keyd stopped"
+    systemctl stop keyd.service
   else
-    systemctl start keyd.service && ${notify_cmd} "Keyd started"
+    systemctl start keyd.service
   fi
 }
 
 case "${1:-}" in
---start) systemctl start keyd.service && ${notify_cmd} "Keyd started" ;;
---stop) systemctl stop keyd.service && ${notify_cmd} "Keyd stopped" ;;
+--start) systemctl start keyd.service ;;
+--stop) systemctl stop keyd.service ;;
 --status) emit_json ;;
 --toggle) toggle ;;
 *) emit_json ;;

@@ -23,6 +23,7 @@ PKG_INSTALL=(
   nvm
   nwg-displays
   nwg-look
+  mate-polkit
   papirus-folders-catppuccin-git
   qalculate-gtk
   pipewire
@@ -34,7 +35,6 @@ PKG_INSTALL=(
   hyprlock
   hyprtoolkit
   hyprlauncher
-  hyprpolkitagent
   hyprshutdown
   hypridle
   ttf-jetbrains-mono-nerd
