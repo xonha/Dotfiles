@@ -6,8 +6,8 @@
     "format-bluetooth-muted": "Off 󰂲",
     "scroll-step": 5.0,
     "format-icons": {
-      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo": "󰋋",
-      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo-muted": "󰟎",
+      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo": "󰋋",
+      "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo-muted": "󰟎",
       "bluez_output.C4_30_18_9C_96_75.1": "",
       "bluetooth": "",
       "headphone": "󰋋",
