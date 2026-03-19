@@ -5,6 +5,7 @@ PKG_INSTALL=(
   bluetui
   debugedit
   earlyoom
+  fastfetch
   grim
   hyprland
   impala
@@ -78,6 +79,7 @@ PKG_UNINSTALL=(
   archcraft-help
   archcraft-about
   archcraft-vim
+  archcraft-neofetch
   archcraft-openbox
   xfce4-power-manager
   xfce4-notifyd
