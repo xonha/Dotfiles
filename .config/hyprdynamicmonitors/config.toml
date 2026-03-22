@@ -1,0 +1,54 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+
+[profiles.default]
+config_file = "/home/henrique/.config/hyprdynamicmonitors/hyprconfigs/default.go.tmpl"
+config_file_type = "template"
+[profiles.default.conditions]
+
+[[profiles.default.conditions.required_monitors]]
+description = "Lenovo Group Limited 0x40A9"
+monitor_tag = "monitor0"
+
+
+[profiles.docked]
+config_file = "/home/henrique/.config/hyprdynamicmonitors/hyprconfigs/docked.go.tmpl"
+config_file_type = "template"
+[profiles.docked.conditions]
+
+[[profiles.docked.conditions.required_monitors]]
+description = "Lenovo Group Limited 0x40A9"
+monitor_tag = "monitor0"
+
+[[profiles.docked.conditions.required_monitors]]
+description = "Shenzhen KTC Technology Group SFPCCB24180 000000000000"
+monitor_tag = "monitor1"
+
+[[profiles.docked.conditions.required_monitors]]
+description = "SUE SFP2412FHD 000000000000"
+monitor_tag = "monitor2"
+
+
+
+
+[profiles.travel]
+config_file = "/home/henrique/.config/hyprdynamicmonitors/hyprconfigs/travel.go.tmpl"
+config_file_type = "template"
+[profiles.travel.conditions]
+
+[[profiles.travel.conditions.required_monitors]]
+description = "Lenovo Group Limited 0x40A9"
+monitor_tag = "monitor0"
+
+[[profiles.travel.conditions.required_monitors]]
+description = "Invalid Vendor Codename - RTK 0x1920 demoset-1"
+monitor_tag = "monitor3"

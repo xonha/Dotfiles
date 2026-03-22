@@ -39,6 +39,8 @@ PKG_INSTALL=(
   hyprlauncher
   hyprshutdown
   hypridle
+  hyprpicker
+  hyprsunset
   ttf-jetbrains-mono-nerd
   tailscale
   socat
@@ -51,8 +53,6 @@ PKG_INSTALL=(
   noisetorch-bin
   lazygit
   lazydocker
-  hyprpicker
-  hyprsunset
   kdeconnect
   keyd
   wl-clipboard
@@ -64,6 +64,7 @@ PKG_INSTALL=(
 
 PKG_AUR_INSTALL=(
   aur/brave-bin
+  aur/hyprdynamicmonitors-bin
   aur/zsh-theme-powerlevel10k-bin-git
   aur/zsh-auto-venv-git
   aur/visual-studio-code-bin

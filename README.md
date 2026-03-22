@@ -1,5 +1,13 @@
 # Dotfiles
 
+systemctl --user enable --now hypridle.service
+systemctl --user enable --now hyprpaper.service
+systemctl --user enable --now hyprsunset.service
+systemctl --user enable --now hyprdynamicmonitors-prepare.service
+
+sudo systemctl enable --now tailscaled.service
+sudo systemctl enable --now earlyoom.service
+
 ## Bazzite Development Container Setup
 
 This repository includes a `Dockerfile` for creating an Arch Linux development container (`devbox`) on Bazzite with automatic startup.
@@ -307,6 +315,7 @@ The container runs an SSH server on port 22, which is forwarded to port 2222 on 
    ```
 
 3. Connect:
+
    ```bash
    ssh henrique@devbox
    # Password: plambas
