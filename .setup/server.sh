@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Step: Install server / headless packages
+# Safe to run on both a laptop and an SSH-only cloud server.
+
+SETUP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SETUP_DIR/lib.sh"
+
+PKG_SERVER=(
+  # Shell & terminal tooling
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-history-substring-search
+
+  # Editors & language runtimes
+  neovim
+  npm
+  nvm
+  opencode
+
+  # CLI utilities
+  debugedit
+  earlyoom
+  fastfetch
+  ripgrep
+  socat
+  stow
+  wget
+
+  # Networking
+  tailscale
+
+  # Containers & git tooling
+  docker
+  lazygit
+  lazydocker
+)
+
+PKG_SERVER_AUR=(
+  aur/zsh-theme-powerlevel10k-bin-git
+  aur/zsh-auto-venv-git
+)
+
+run() {
+  header "Install server packages"
+
+  info "Installing packages from official repos..."
+  yay -Syu --needed --noconfirm --removemake "${PKG_SERVER[@]}"
+
+  info "Installing AUR packages..."
+  yay -Syu --needed --noconfirm --removemake "${PKG_SERVER_AUR[@]}"
+
+  success "Server packages installed."
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  run
+fi

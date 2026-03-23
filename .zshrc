@@ -202,7 +202,7 @@ alias delete='yay -R --noconfirm'
 alias del='delete'
 alias add='yay --noconfirm --removemake'
 
-alias dotfiles='nvim ~/Dotfiles'
+alias dotfiles='cd ~/Dotfiles && nvim .'
 alias dot='dotfiles'
 
 alias maistodos='ssh maistodos'
