@@ -21,10 +21,11 @@ PKG_UNINSTALL=(
   obconf
   openbox
   plank
-  rofi
   xcolor
   alacritty
   ranger
+  rofi-lbonn-wayland-git
+  rofi
   tint2
   mplayer
   mpd
@@ -36,6 +37,7 @@ PKG_UNINSTALL=(
   xarchiver
   nitrogen
   nm-connection-editor
+  network-manager-applet
   networkmanager-dmenu-git
   galculator
   atril
@@ -57,10 +59,10 @@ run() {
       info "Removing $pkg..."
       if yay -Rns "$pkg" --noconfirm 2>/dev/null; then
         success "Removed $pkg"
-        (( removed++ ))
+        ((removed++))
       else
         warn "Could not remove $pkg (may have dependents)"
-        (( skipped++ ))
+        ((skipped++))
       fi
     else
       info "Not installed, skipping: $pkg"
