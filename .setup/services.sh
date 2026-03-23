@@ -15,11 +15,6 @@ SERVICES_OPTIONAL=(
   docker.service
 )
 
-# Only enabled on desktop (when keyd is installed)
-SERVICES_DESKTOP=(
-  keyd.service
-)
-
 enable_service() {
   local svc="$1"
   info "Enabling $svc..."
@@ -42,14 +37,6 @@ run() {
       enable_service "$svc"
     fi
   done
-
-  if systemctl list-unit-files keyd.service &>/dev/null; then
-    for svc in "${SERVICES_DESKTOP[@]}"; do
-      enable_service "$svc"
-    done
-  else
-    info "Skipping desktop services (keyd not installed)."
-  fi
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

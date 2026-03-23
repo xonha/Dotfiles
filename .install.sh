@@ -38,6 +38,10 @@ if confirm_step \
   run
 fi
 
+# ── GRUB ──────────────────────────────────────────────────────────────────
+source "$SETUP_DIR/grub.sh"
+run
+
 # ── Services ──────────────────────────────────────────────────────────────
 source "$SETUP_DIR/services.sh"
 run
