@@ -7,9 +7,9 @@ max-history=100
 sort=-time
 
 # BINDING OPTIONS
-on-button-left=dismiss
-on-button-middle=dismiss-all
-on-button-right=dismiss-all
+on-button-left=exec ~/.config/scripts/mako-click.sh
+on-button-right=dismiss
+on-button-middle=dismiss-group
 on-touch=dismiss
 
 # STYLE OPTIONS

@@ -10,7 +10,7 @@ case "$choice" in
   hyprshutdown
   ;;
 *Suspend*)
-  hyprshutdown -t 'Suspending...' --post-cmd 'systemctl suspend'
+  systemctl suspend
   ;;
 *Restart*)
   hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'
@@ -22,4 +22,3 @@ case "$choice" in
   exit 1
   ;;
 esac
-
