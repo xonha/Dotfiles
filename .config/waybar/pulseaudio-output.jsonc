@@ -1,4 +1,5 @@
 {
+  // pactl list sinks short
   "pulseaudio#output": {
     "format": "{volume}% {icon}",
     "format-muted": "Off {icon}",
@@ -8,9 +9,9 @@
     "format-icons": {
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo": "󰋋",
       "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo-muted": "󰟎",
+      "alsa_output.pci-0000_06_00.1.hdmi-stereo-extra2": "󰓃",
+      "alsa_output.pci-0000_06_00.1.hdmi-stereo-extra2-muted": "󰓄",
       "bluez_output.C4_30_18_9C_96_75.1": "",
-      "headphone": "󰋋",
-      "phone": "",
       "default-muted": "󰝟",
       "default": ["󰕿", "󰖀", "󰕾"],
     },
