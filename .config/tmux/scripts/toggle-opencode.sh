@@ -20,9 +20,9 @@ if [ -n "$OPENCODE_PANE" ]; then
     tmux break-pane -d -s "$PANE_ID"
   else
     # Opencode exists but is hidden — bring it back
-    tmux join-pane -h -l 35% -s "$PANE_ID"
+    tmux join-pane -h -l 40% -s "$PANE_ID"
   fi
 else
   # No opencode pane — create one
-  tmux split-window -h -l 35% -c "$CURRENT_PATH" opencode
+  tmux split-window -h -l 40% -c "$CURRENT_PATH" opencode
 fi
