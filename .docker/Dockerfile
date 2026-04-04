@@ -27,12 +27,20 @@ RUN pacman -Sy --noconfirm \
         zsh-history-substring-search \
         nvm \
         kitty-terminfo \
+        tmux \
     && pacman -Scc --noconfirm
+
+# Set UTF-8 locale so Neovim renders Unicode/Nerd Font glyphs correctly
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 # Configure SSH server
 RUN ssh-keygen -A \
     && sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+    && echo 'AcceptEnv TERM' >> /etc/ssh/sshd_config \
+    && echo 'SetEnv LANG=C.UTF-8' >> /etc/ssh/sshd_config \
+    && echo 'SetEnv LC_ALL=C.UTF-8' >> /etc/ssh/sshd_config
 
 # Create development user named henrique with sudo privileges.
 ARG USERNAME=henrique

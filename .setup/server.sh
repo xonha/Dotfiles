@@ -26,6 +26,7 @@ PKG_SERVER=(
   socat
   stow
   wget
+  tmux
 
   # Networking
   tailscale
