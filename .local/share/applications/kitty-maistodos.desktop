@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Kitty MaisTodos
+GenericName=kitty-maistodos
+StartupNotify=true
+StartupWMClass=kitty-maistodos
+Exec=kitty --class kitty-maistodos
+Terminal=false
+Icon=komorebi
+Type=Application
+Categories=System;TerminalEmulator;
+NoDisplay=true

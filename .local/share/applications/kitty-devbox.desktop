@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Kitty Devbox
+GenericName=kitty-devbox
+StartupNotify=true
+StartupWMClass=kitty-devbox
+Exec=kitty --class kitty-devbox
+Terminal=false
+Icon=komorebi-wallpaper-creator
+Type=Application
+Categories=System;TerminalEmulator;
+NoDisplay=true
