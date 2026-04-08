@@ -203,8 +203,16 @@ alias delete='yay -R --noconfirm'
 alias del='delete'
 alias add='yay --noconfirm --removemake'
 
-alias dotfiles='cd ~/Dotfiles && nvim .'
-alias dot='dotfiles'
+dot() {
+  if [[ -d ~/Dotfiles ]]; then
+    cd ~/Dotfiles && nvim .
+  elif [[ -d ~/dotfiles ]]; then
+    cd ~/dotfiles && nvim .
+  else
+    echo "No Dotfiles or dotfiles directory found."
+  fi
+}
+alias dotfiles='dot'
 
 alias maistodos='ssh maistodos'
 alias console='ssh console'
