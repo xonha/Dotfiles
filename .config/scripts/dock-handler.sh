@@ -1,49 +1,59 @@
 #!/usr/bin/env bash
 # ~/.config/scripts/dock-handler.sh
 # Unified dock handler: monitors display + toggles keyd
-# Listens to udev for USB device changes
+# Uses polling to detect dock state
 
 set -Eeuo pipefail
 
 KEYD_SERVICE="keyd.service"
+DOCK_ID="0bda:8152"
+STATE_FILE="/tmp/dock-handler-state"
 
 apply_dock() {
-    echo "Applying docked configuration..."
-    hyprctl keyword monitor "eDP-1, disable"
-    hyprctl keyword monitor "desc:Shenzhen KTC Technology Group SFPCCB24180 000000000000,1920x1080@120.00000,0x0,1.00000000,transform,0,vrr,0"
-    hyprctl keyword monitor "desc:SUE SFP2412FHD 000000000000,1920x1080@120.00000,1920x0,1.00000000,transform,0,vrr,0"
-    systemctl stop "$KEYD_SERVICE"
+  echo "Applying docked configuration..."
+  hyprctl keyword monitor "eDP-1, disable"
+  hyprctl keyword monitor "desc:Shenzhen KTC Technology Group SFPCCB24180 000000000000,1920x1080@120.00000,0x0,1.00000000,transform,0,vrr,0"
+  hyprctl keyword monitor "desc:SUE SFP2412FHD 000000000000,1920x1080@120.00000,1920x0,1.00000000,transform,0,vrr,0"
+  # systemctl stop "$KEYD_SERVICE"
+  echo "docked" >"$STATE_FILE"
 }
 
 apply_travel() {
-    echo "Applying travel configuration..."
-    hyprctl keyword monitor "eDP-1,1920x1080@60.02,192x2160,1.0"
-    hyprctl keyword monitor "desc:Invalid Vendor Codename - RTK 0x1920 demoset-1,1920x1080@60.0,192x1080,1.0"
-    systemctl start "$KEYD_SERVICE"
+  echo "Applying travel configuration..."
+  hyprctl keyword monitor "eDP-1,1920x1080@60.02,192x2160,1.0"
+  hyprctl keyword monitor "desc:Invalid Vendor Codename - RTK 0x1920 demoset-1,1920x1080@60.0,192x1080,1.0"
+  # systemctl start "$KEYD_SERVICE"
+  echo "undocked" >"$STATE_FILE"
 }
 
 apply_default() {
-    echo "Applying default configuration..."
-    hyprctl keyword monitor "eDP-1,1920x1080@60.02000,0x0,1.00000000,transform,0,vrr,0"
-    systemctl start "$KEYD_SERVICE"
+  echo "Applying default configuration..."
+  hyprctl keyword monitor "eDP-1,1920x1080@60.02000,0x0,1.00000000,transform,0,vrr,0"
+  # systemctl start "$KEYD_SERVICE"
+  echo "default" >"$STATE_FILE"
 }
 
-DOCK_ID="04b4:f649"
-
 check_dock() {
-    if lsusb | grep -q "$DOCK_ID"; then
-        return 0
-    else
-        return 1
-    fi
+  if lsusb | grep -q "$DOCK_ID"; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 apply() {
-    if check_dock; then
-        apply_dock
-    else
-        apply_travel
+  local current_state
+  current_state=$(cat "$STATE_FILE" 2>/dev/null || echo "")
+
+  if check_dock; then
+    if [ "$current_state" != "docked" ]; then
+      apply_dock
     fi
+  else
+    if [ "$current_state" != "undocked" ]; then
+      apply_travel
+    fi
+  fi
 }
 
 case "${1:-}" in
@@ -51,14 +61,15 @@ case "${1:-}" in
 --dock) apply_dock ;;
 --travel) apply_travel ;;
 --default) apply_default ;;
+--loop)
+  echo "Starting dock handler loop (polling every 3s)..."
+  while true; do
+    apply
+    sleep 3
+  done
+  ;;
 *)
-    echo "Listening for dock USB events (04b4:f649)..."
-    udevadm monitor --subsystem-match=usb --property 2>/dev/null | while read -r line; do
-        if echo "$line" | grep -q "04b4"; then
-            echo "Dock device change detected, checking dock state..."
-            sleep 2
-            apply
-        fi
-    done
-    ;;
+  apply
+  ;;
 esac
+
