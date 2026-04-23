@@ -11,6 +11,7 @@ STATE_FILE="/tmp/dock-handler-state"
 
 apply_dock() {
   echo "Applying docked configuration..."
+  notify-send "Dock" "Applying docked configuration" -u low
   hyprctl keyword monitor "eDP-1, disable"
   hyprctl keyword monitor "desc:Shenzhen KTC Technology Group SFPCCB24180 000000000000,1920x1080@120.00000,0x0,1.00000000,transform,0,vrr,0"
   hyprctl keyword monitor "desc:SUE SFP2412FHD 000000000000,1920x1080@120.00000,1920x0,1.00000000,transform,0,vrr,0"
@@ -20,6 +21,7 @@ apply_dock() {
 
 apply_travel() {
   echo "Applying travel configuration..."
+  notify-send "Dock" "Applying travel configuration" -u low
   hyprctl keyword monitor "eDP-1,1920x1080@60.02,192x2160,1.0"
   hyprctl keyword monitor "desc:Invalid Vendor Codename - RTK 0x1920 demoset-1,1920x1080@60.0,192x1080,1.0"
   # systemctl start "$KEYD_SERVICE"
@@ -28,6 +30,7 @@ apply_travel() {
 
 apply_default() {
   echo "Applying default configuration..."
+  notify-send "Dock" "Applying default configuration" -u low
   hyprctl keyword monitor "eDP-1,1920x1080@60.02000,0x0,1.00000000,transform,0,vrr,0"
   # systemctl start "$KEYD_SERVICE"
   echo "default" >"$STATE_FILE"
@@ -72,4 +75,3 @@ case "${1:-}" in
   apply
   ;;
 esac
-
