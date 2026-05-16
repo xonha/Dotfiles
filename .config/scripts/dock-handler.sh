@@ -13,8 +13,8 @@ apply_dock() {
   echo "Applying docked configuration..."
   notify-send "Dock" "Applying docked configuration" -u low
   hyprctl keyword monitor "eDP-1, disable"
-  hyprctl keyword monitor "desc:Shenzhen KTC Technology Group SFPCCB24180 000000000000,1920x1080@90,0x0,1.00000000,transform,0,vrr,0"
-  hyprctl keyword monitor "desc:SUE SFP2412FHD 000000000000,1920x1080@90,1920x0,1.00000000,transform,0,vrr,0"
+  hyprctl keyword monitor "desc:Shenzhen KTC Technology Group SFPCCB24180 000000000000,1920x1080@60,0x0,1.00000000,transform,0,vrr,0"
+  hyprctl keyword monitor "desc:SUE SFP2412FHD 000000000000,1920x1080@60,1920x0,1.00000000,transform,0,vrr,0"
   # systemctl stop "$KEYD_SERVICE"
   echo "docked" >"$STATE_FILE"
 }
