@@ -10,7 +10,7 @@ map("i", "<S-Tab>", "<Tab>", { noremap = true, silent = true })
 map("n", "<leader>ce", ":EditCodeBlock<CR>:LspRestart<CR>", { noremap = true, silent = true, desc = "Edit Code Block" })
 
 map("n", "<leader>gd", function()
-  LazyVim.terminal.open({ "lazydocker" }, { esc_esc = false, ctrl_hjkl = false })
+  Snacks.terminal.open({ "lazydocker" }, { win = { keys = { term_normal = false } } })
 end, { desc = "Lazydocker" })
 
 map("i", "jf", function()
