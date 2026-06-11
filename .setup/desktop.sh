@@ -81,6 +81,9 @@ PKG_DESKTOP_AUR=(
   aur/wlctl-bin
   aur/pinta
   aur/valent
+
+  # Spec Kit — spec-driven development CLI (uses uv from server step)
+  aur/specify-cli-bin
 )
 
 run() {

@@ -17,6 +17,7 @@ PKG_SERVER=(
   npm
   nvm
   opencode
+  uv
 
   # CLI utilities
   debugedit
