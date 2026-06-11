@@ -129,7 +129,10 @@ the agent budget display updates as expected.
   the n8n reference.
 - **FR-008**: The service MUST be re-deployable from the dotfiles repo alone
   — a new `console` machine MUST be able to run Paperclip by following the
-  documentation without undocumented manual steps.
+  documentation without undocumented manual steps. Because `console` is
+  reachable via `ssh console` (Tailscale MagicDNS), the entire deployment
+  process MUST be executable by an AI agent without any human intervention on
+  the target machine.
 
 ### Key Entities
 
@@ -180,3 +183,15 @@ the agent budget display updates as expected.
   internet exposure is required or desired.
 - Data backup and disaster recovery are out of scope for this feature; the
   persistence requirement covers normal restart/reboot cycles only.
+- `console` is reachable from the development machine via `ssh console`
+  (Tailscale MagicDNS alias). This means the full deployment — cloning
+  dotfiles, stowing, building the container image, onboarding, allowlisting
+  the hostname, and fixing container configuration — can be completed
+  entirely by an AI agent over SSH without any human on the target machine.
+  This is the intended replication path for future deployments.
+
+## Clarifications
+
+### Session 2026-06-11
+
+- Q: Should FR-008's "re-deployable from dotfiles repo" explicitly include agent-driven deployment as a first-class scenario? → A: Yes — update FR-008 and add an assumption that `ssh console` access makes the entire process agent-executable (Option A).
