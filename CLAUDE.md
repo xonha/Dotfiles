@@ -8,6 +8,7 @@ Arch Linux dotfiles managed with GNU Stow. Run `stow .` from repo root to deploy
 - [Constitution](docs/constitution.md) — purpose, principles, philosophy
 - [Infrastructure](docs/infra.md) — machines, Tailscale network, how to reach each host
 - [devbox](docs/devbox.md) — Arch Linux dev container on Bazzite (Podman + systemd)
+- [Paperclip](docs/paperclip.md) — AI agent orchestrator on console (Podman + Quadlet)
 - [n8n](docs/n8n-bazzite.md) — n8n self-hosted on Bazzite (Podman + Quadlet)
 - [Setup notes](.setup/README.md) — wake-from-suspend, udev rules, hardware quirks
 - [Stow layout](#stow-layout) — directory map for this repo
@@ -28,6 +29,7 @@ Arch Linux dotfiles managed with GNU Stow. Run `stow .` from repo root to deploy
 | `.keyd.conf` | Keyd keyboard remapping |
 | `.ssh/config` | SSH host aliases |
 | `.docker/Dockerfile` | devbox container image |
+| `.config/containers/systemd/` | Podman Quadlet units for `console` services (Paperclip) |
 | `.setup/` | Setup scripts sourced by `.install.sh` |
 
 ## Adding Dotfiles
@@ -37,5 +39,5 @@ Drop file under repo root at its `$HOME`-relative path, then re-run `stow .`.
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
-at `specs/001-tailscale-connectivity-docs/plan.md`.
+at `specs/002-paperclip-bazzite/plan.md`.
 <!-- SPECKIT END -->
