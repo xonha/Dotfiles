@@ -54,8 +54,12 @@ podman images | grep paperclip-local
 
 ### 3. Create the Data Directory
 
+Rootless Podman maps container UID 1000 (`node`) to a different host UID.
+Use `podman unshare` to set ownership correctly inside the user namespace:
+
 ```bash
 mkdir -p ~/.local/share/paperclip
+podman unshare chown -R 1000:1000 ~/.local/share/paperclip
 ```
 
 ### 4. Create the Secrets File
@@ -100,16 +104,53 @@ Wait up to 60 seconds for PostgreSQL to become healthy, then verify:
 systemctl --user status paperclip-pod paperclip paperclip-db
 ```
 
-Navigate to `http://console:3100` from any Tailscale machine — the
-onboarding screen should appear.
+### 6. Onboard and Allow the `console` Hostname
 
-### 6. Enable Auto-Start on Boot
+Run the onboard wizard non-interactively (config.json does not exist yet):
 
 ```bash
-systemctl --user enable paperclip-pod paperclip paperclip-db
+podman exec paperclip pnpm paperclipai onboard -y
+```
 
-# Enable linger so user services start without login
-# (skip if already set for devbox):
+Then add the `console` Tailscale MagicDNS hostname to the allowlist:
+
+```bash
+podman exec paperclip pnpm paperclipai allowed-hostname console
+```
+
+Next, edit the generated config to bind to all interfaces (required because
+Tailscale doesn't run inside the container — the pod handles port forwarding):
+
+```bash
+podman exec paperclip python3 -c "
+import json
+path = '/paperclip/instances/default/config.json'
+with open(path) as f: c = json.load(f)
+c['server'].pop('bind', None)
+c['server']['host'] = '0.0.0.0'
+with open(path, 'w') as f: json.dump(c, f, indent=2)
+print('done')
+"
+```
+
+Finally, fix file ownership (onboard runs as container root; the server runs
+as `node`):
+
+```bash
+podman unshare chown -R 1000:1000 ~/.local/share/paperclip
+systemctl --user restart paperclip-pod
+```
+
+Navigate to `http://console:3100` from any Tailscale machine — the
+onboarding sign-in screen should appear.
+
+### 7. Enable Auto-Start on Boot
+
+Quadlet services with `WantedBy=default.target` start automatically — no
+`systemctl enable` needed. Just ensure linger is on (skip if devbox is
+already running, since it requires linger too):
+
+```bash
 loginctl enable-linger $USER
 loginctl show-user $USER | grep Linger   # should show Linger=yes
 ```
