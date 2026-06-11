@@ -7,7 +7,7 @@ After=paperclip-db.service
 Image=paperclip-local
 ContainerName=paperclip
 Pod=paperclip.pod
-Volume=%h/.local/share/paperclip:/paperclip:Z
+Volume=%h/.local/share/paperclip:/paperclip:z
 Environment=HOST=0.0.0.0
 Environment=PAPERCLIP_HOME=/paperclip
 Environment=PAPERCLIP_DEPLOYMENT_MODE=authenticated
