@@ -37,4 +37,5 @@ Drop file under repo root at its `$HOME`-relative path, then re-run `stow .`.
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
+at `specs/001-tailscale-connectivity-docs/plan.md`.
 <!-- SPECKIT END -->
