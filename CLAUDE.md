@@ -4,10 +4,12 @@ Arch Linux dotfiles managed with GNU Stow. Run `stow .` from repo root to deploy
 
 ## Index
 
+- [Overview](docs/overview.md) — what this repo does and covers
+- [Constitution](docs/constitution.md) — purpose, principles, philosophy
 - [Infrastructure](docs/infra.md) — machines, Tailscale network, how to reach each host
 - [devbox](docs/devbox.md) — Arch Linux dev container on Bazzite (Podman + systemd)
 - [n8n](docs/n8n-bazzite.md) — n8n self-hosted on Bazzite (Podman + Quadlet)
-- [Setup](/.setup/README.md) — fresh machine setup steps, wake-from-suspend, udev rules
+- [Setup notes](.setup/README.md) — wake-from-suspend, udev rules, hardware quirks
 - [Stow layout](#stow-layout) — directory map for this repo
 
 ## Stow Layout
