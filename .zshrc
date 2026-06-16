@@ -196,7 +196,7 @@ alias lg='ls -l --group-directories-first'
 
 # git
 alias g='git'
-alias g='git checkout'
+alias gc='git checkout'
 
 alias update='yay --noconfirm --removemake && sudo pacman -Rns $(pacman -Qdtq) --noconfirm'
 alias up='update'
