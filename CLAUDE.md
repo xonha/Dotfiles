@@ -39,5 +39,5 @@ Drop file under repo root at its `$HOME`-relative path, then re-run `stow .`.
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
-at `specs/002-paperclip-bazzite/plan.md`.
+at `specs/003-nvim-clipboard-sync/plan.md`.
 <!-- SPECKIT END -->
