@@ -15,29 +15,31 @@ Arch Linux dotfiles managed with GNU Stow. Run `stow .` from repo root to deploy
 
 ## Stow Layout
 
-| Path | Purpose |
-|------|---------|
-| `.config/hypr/` | Hyprland WM (`monitors.conf` gitignored — machine-specific) |
-| `.config/kitty/` | Kitty terminal |
-| `.config/nvim/` | Neovim — LazyVim (`lazy-lock.json` gitignored) |
-| `.config/waybar/` | Waybar status bar |
-| `.config/mako/` | Mako notifications |
-| `.config/opencode/` | OpenCode |
-| `.config/scripts/` | Custom shell scripts |
-| `.tmux.conf` | Tmux |
-| `.zshrc` / `.zshenv` | Zsh + Powerlevel10k (`.p10k.zsh`) |
-| `.keyd.conf` | Keyd keyboard remapping |
-| `.ssh/config` | SSH host aliases |
-| `.docker/Dockerfile` | devbox container image |
-| `.config/containers/systemd/` | Podman Quadlet units for `console` services (Paperclip) |
-| `.setup/` | Setup scripts sourced by `.install.sh` |
+| Path                          | Purpose                                                     |
+| ----------------------------- | ----------------------------------------------------------- |
+| `.config/hypr/`               | Hyprland WM (`monitors.conf` gitignored — machine-specific) |
+| `.config/kitty/`              | Kitty terminal                                              |
+| `.config/nvim/`               | Neovim — LazyVim (`lazy-lock.json` gitignored)              |
+| `.config/waybar/`             | Waybar status bar                                           |
+| `.config/mako/`               | Mako notifications                                          |
+| `.config/opencode/`           | OpenCode                                                    |
+| `.config/scripts/`            | Custom shell scripts                                        |
+| `.tmux.conf`                  | Tmux                                                        |
+| `.zshrc` / `.zshenv`          | Zsh + Powerlevel10k (`.p10k.zsh`)                           |
+| `.keyd.conf`                  | Keyd keyboard remapping                                     |
+| `.ssh/config`                 | SSH host aliases                                            |
+| `.docker/Dockerfile`          | devbox container image                                      |
+| `.config/containers/systemd/` | Podman Quadlet units for `console` services (Paperclip)     |
+| `.setup/`                     | Setup scripts sourced by `.install.sh`                      |
 
 ## Adding Dotfiles
 
 Drop file under repo root at its `$HOME`-relative path, then re-run `stow .`.
 
 <!-- SPECKIT START -->
+
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
 at `specs/003-nvim-clipboard-sync/plan.md`.
+
 <!-- SPECKIT END -->
