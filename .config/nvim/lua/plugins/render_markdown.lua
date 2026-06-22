@@ -6,6 +6,10 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
+    completions = {
+      lsp = { enabled = true },
+      coq = { enabled = true },
+    },
     heading = {
       sign = false,
       border = true,
