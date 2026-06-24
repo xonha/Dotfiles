@@ -22,3 +22,12 @@ hooks:
     prompt: Execute speckit.agent-context.update?
     description: Refresh agent context after planning
     condition: null
+  after_implement:
+  - extension: speckit-review
+    command: speckit-review
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Run staff-level code review?
+    description: Staff-level review da implementacao antes de shippar
+    condition: null
