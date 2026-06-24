@@ -34,6 +34,33 @@
       },
       "registered_skills": [],
       "installed_at": "2026-06-24T13:30:06.973693+00:00"
+    },
+    "tldr": {
+      "version": "0.3.0",
+      "source": "local",
+      "manifest_hash": "sha256:b8dc35dc2c02b92bd2d2467c14464c4eacc1128074ae0f639ef5916890a4df26",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "agy": [
+          "speckit.tldr.generate",
+          "speckit.tldr.clean"
+        ],
+        "claude": [
+          "speckit.tldr.generate",
+          "speckit.tldr.clean"
+        ],
+        "codex": [
+          "speckit.tldr.generate",
+          "speckit.tldr.clean"
+        ],
+        "zed": [
+          "speckit.tldr.generate",
+          "speckit.tldr.clean"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-06-24T13:39:05.592255+00:00"
     }
   }
 }

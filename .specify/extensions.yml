@@ -1,6 +1,7 @@
 installed:
 - agent-context
 - staff-review
+- tldr
 settings:
   auto_execute_hooks: true
 hooks:
