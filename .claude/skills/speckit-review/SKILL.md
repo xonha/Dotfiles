@@ -1,8 +1,11 @@
 ---
-description: Perform a staff-level code review of implementation changes, focused on correctness, security, performance, and spec compliance.
-scripts:
-  sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
-  ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
+name: speckit-review
+description: Perform a staff-level code review of implementation changes, focused
+  on correctness, security, performance, and spec compliance.
+compatibility: Requires spec-kit project structure with .specify/ directory
+metadata:
+  author: arunt14
+  source: https://github.com/arunt14/spec-kit-staff-review
 ---
 
 ## User Input
@@ -55,17 +58,17 @@ Conduct a thorough, staff-engineer-level code review of all changes made during 
 
 **STRICTLY READ-ONLY**: Do **not** modify any source files. Output a structured review report to the reviews directory. If critical issues are found, recommend specific fixes but do NOT apply them.
 
-**Constitution Authority**: The project constitution (`/memory/constitution.md`) defines non-negotiable quality standards. Any violation is automatically a 🔴 Blocker.
+**Constitution Authority**: The project constitution (`.specify/memory/constitution.md`) defines non-negotiable quality standards. Any violation is automatically a 🔴 Blocker.
 
 ## Outline
 
-1. Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+1. Run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
 2. **Gather Review Context**:
    - **REQUIRED**: Read `spec.md` for functional requirements and acceptance criteria
    - **REQUIRED**: Read `plan.md` for architecture decisions and technical constraints
    - **REQUIRED**: Read `tasks.md` for the full task list and implementation scope
-   - **IF EXISTS**: Read `/memory/constitution.md` for quality standards and principles
+   - **IF EXISTS**: Read `.specify/memory/constitution.md` for quality standards and principles
    - **IF EXISTS**: Read any existing review reports in FEATURE_DIR/reviews/ for context
 
 3. **Identify Changes to Review**:
@@ -123,7 +126,7 @@ Conduct a thorough, staff-engineer-level code review of all changes made during 
    - 🟢 **Suggestion**: Code clarity improvement, refactoring opportunity, documentation gap, minor style inconsistency. **Nice to fix but non-blocking.**
 
 10. **Generate Review Report**:
-    Create the review report in a new file at `FEATURE_DIR/reviews/review-{YYYYMMDD-HHMMSS}.md` using the `templates/review-template.md` review report template. Ensure the `FEATURE_DIR/reviews/` directory exists (create it if necessary). The report must include:
+    Create the review report in a new file at `FEATURE_DIR/reviews/review-{YYYYMMDD-HHMMSS}.md` using the review report template bundled with this skill at `assets/review-template.md`. Ensure the `FEATURE_DIR/reviews/` directory exists (create it if necessary). The report must include:
 
     - **Executive Summary**: Overall assessment (APPROVED / APPROVED WITH CONDITIONS / CHANGES REQUIRED)
     - **Findings Table**: All findings with ID, severity, file, line(s), description, recommendation
@@ -143,7 +146,7 @@ Conduct a thorough, staff-engineer-level code review of all changes made during 
 Suggest next steps based on verdict:
 - If APPROVED: "Run `/speckit.ship` to prepare the release"
 - If APPROVED WITH CONDITIONS: "Address warnings, then run `/speckit.ship`"
-- If CHANGES REQUIRED: "Fix blocker issues, then run `/speckit.review` again"
+- If CHANGES REQUIRED: "Fix blocker issues, then run `/speckit-review` again"
 
 **Check for extension hooks (after review)**:
 - Check if `.specify/extensions.yml` exists in the project root.
