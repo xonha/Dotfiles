@@ -72,6 +72,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[OA' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^[OB' history-substring-search-down
+bindkey '^H' backward-kill-word  # ctrl+backspace
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME="archcraft"
