@@ -32,7 +32,7 @@ PKG_DESKTOP=(
   # Audio
   pipewire
   pipewire-pulse
-  noisetorch-bin
+  noise-suppression-for-voice # RNNoise LADSPA plugin for mic denoising
 
   # Screenshot & screen capture
   grim
