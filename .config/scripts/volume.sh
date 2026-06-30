@@ -5,6 +5,10 @@
 DIR="$HOME/.config/mako/icons"
 notify_cmd='notify-send -h string:x-canonical-private-synchronous:sys-notify-volume -u low'
 
+# Mic toggle feedback sounds (no visual notification)
+MIC_ON_SOUND="/usr/share/sounds/freedesktop/stereo/message-new-instant.oga"
+MIC_OFF_SOUND="/usr/share/sounds/freedesktop/stereo/network-connectivity-lost.oga"
+
 # Get Volume
 get_volume() {
   pulsemixer --get-volume | cut -d' ' -f1
@@ -48,23 +52,16 @@ toggle_mute() {
 }
 
 toggle_mic() {
-  # Snapshot all source info in a single call
-  SOURCES=$(pulsemixer --list-sources)
-
-  # Determine target state from the default source's current mute status
-  DEFAULT_MUTE_STATUS=$(echo "$SOURCES" | grep 'Default' | grep -o 'Mute: [0-1]' | cut -d' ' -f2)
-  if [ "$DEFAULT_MUTE_STATUS" == "1" ]; then
-    ACTION="--unmute"
+  # Fast path via pactl (C tool) on the default source — ~10x quicker than
+  # spawning pulsemixer (Python) once per source.
+  local sounds="/usr/share/sounds/freedesktop/stereo"
+  if pactl get-source-mute @DEFAULT_SOURCE@ | grep -q yes; then
+    pactl set-source-mute @DEFAULT_SOURCE@ 0          # unmute -> mic active
+    pw-play "$MIC_ON_SOUND" &
   else
-    ACTION="--mute"
+    pactl set-source-mute @DEFAULT_SOURCE@ 1          # mute -> mic off
+    pw-play "$MIC_OFF_SOUND" &
   fi
-
-  # Apply action to all sources in parallel
-  IFS=$'\n' read -d '' -ra IDS_ARRAY <<<"$(echo "$SOURCES" | grep 'Source:' | cut -d',' -f1 | cut -d' ' -f3)"
-  for ID in "${IDS_ARRAY[@]}"; do
-    pulsemixer --id "$ID" $ACTION &
-  done
-  wait
 }
 
 mute_mic() {
