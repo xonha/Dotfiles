@@ -52,16 +52,21 @@ toggle_mute() {
 }
 
 toggle_mic() {
-  # Fast path via pactl (C tool) on the default source — ~10x quicker than
-  # spawning pulsemixer (Python) once per source.
-  local sounds="/usr/share/sounds/freedesktop/stereo"
+  # Target state from the default source, applied to ALL sources so no app
+  # (on any input, incl. the raw mic behind RNNoise) stays hot. Iterate by
+  # index (numeric, space-safe) — pactl in C is still ~10x faster than pulsemixer.
+  local target
   if pactl get-source-mute @DEFAULT_SOURCE@ | grep -q yes; then
-    pactl set-source-mute @DEFAULT_SOURCE@ 0          # unmute -> mic active
+    target=0                                          # unmute -> mic active
     pw-play "$MIC_ON_SOUND" &
   else
-    pactl set-source-mute @DEFAULT_SOURCE@ 1          # mute -> mic off
+    target=1                                          # mute -> mic off
     pw-play "$MIC_OFF_SOUND" &
   fi
+  local idx
+  for idx in $(pactl list short sources | cut -f1); do
+    pactl set-source-mute "$idx" "$target"
+  done
 }
 
 mute_mic() {
